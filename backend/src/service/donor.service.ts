@@ -1,4 +1,4 @@
-import { DonorInformation } from "../interfaces/user.interfaces";
+import { IDonorInformation } from "../interfaces/user.interfaces";
 import { DonorModel } from "../model/donor.model";
 
 export async function setDonor(userId: string) {
@@ -7,7 +7,7 @@ export async function setDonor(userId: string) {
 
 export async function setDonorInformation(
   userId: string,
-  body: DonorInformation
+  body: IDonorInformation
 ) {
   return await DonorModel.setDonorInformation(userId, body);
 }
@@ -18,7 +18,7 @@ export async function getDonorInformation() {
 
 export async function updateDonorInformation(
   userId: string,
-  body: DonorInformation
+  body: IDonorInformation
 ) {
   return await DonorModel.updateDonorInformation(userId, body);
 }

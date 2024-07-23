@@ -1,4 +1,4 @@
-import { HealthCenter, User } from "../interfaces/user.interfaces";
+import { IHealthCenter, IUser } from "../interfaces/user.interfaces";
 import * as UserModel from "../model/user.model";
 import bcrypt from "bcrypt";
 
@@ -10,17 +10,17 @@ export function getUserById(id: number) {
   return UserModel.UserModel.getUserById(id);
 }
 
-export function updateUser(id: number, user: User) {
+export function updateUser(id: number, user: IUser) {
   return UserModel.UserModel.updateUser(id, user);
 }
 
-export async function createUser(user: User) {
+export async function createUser(user: IUser) {
   const password = await bcrypt.hash(user.password, 10);
   user.password = password;
   return UserModel.UserModel.createUser(user);
 }
 
-export async function createHealthCenter(user: HealthCenter) {
+export async function createHealthCenter(user: IHealthCenter) {
   const password = await bcrypt.hash(user.password, 10);
   user.password = password;
   return UserModel.UserModel.createHealthCenter(user);

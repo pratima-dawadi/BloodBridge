@@ -1,4 +1,4 @@
-export interface Inventory {
+export interface IInventory {
   healthCenterId: number;
   bloodType: string;
   quantity: number;

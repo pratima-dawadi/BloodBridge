@@ -28,7 +28,7 @@ export async function createUser(req: Request, res: Response) {
 export async function createHealthCenter(req: Request, res: Response) {
   const { body } = req;
   const data = await UserService.createHealthCenter(body);
-  res.json(`Created User: ${JSON.stringify(data)}`);
+  res.json(`Created User: ${data}`);
 }
 
 export async function deleteUser(req: Request, res: Response) {

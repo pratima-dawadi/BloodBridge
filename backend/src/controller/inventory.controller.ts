@@ -6,7 +6,7 @@ export async function createInventory(req: Request, res: Response) {
   const userId = req.user!.id;
   const { body } = req;
   const data = await InventoryService.createInventory(userId, body);
-  res.json(data);
+  res.json(JSON.stringify(data));
 }
 
 export async function getInventory(req: Request, res: Response) {

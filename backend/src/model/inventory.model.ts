@@ -1,8 +1,8 @@
-import { Inventory } from "../interfaces/inventory.interface";
+import { IInventory } from "../interfaces/inventory.interface";
 import { BaseModel } from "./base.model";
 
 export class InventoryModel extends BaseModel {
-  static async createInventory(userId: string, body: Inventory) {
+  static async createInventory(userId: string, body: IInventory) {
     const healthCenterId = this.queryBuilder()
       .select("id")
       .from("health_center")
@@ -33,7 +33,7 @@ export class InventoryModel extends BaseModel {
     return data;
   }
 
-  static async updateInventory(userId: string, body: Inventory) {
+  static async updateInventory(userId: string, body: IInventory) {
     const healthCenterId = this.queryBuilder()
       .select("id")
       .from("health_center")

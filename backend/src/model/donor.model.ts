@@ -1,4 +1,4 @@
-import { DonorInformation } from "../interfaces/user.interfaces";
+import { IDonorInformation } from "../interfaces/user.interfaces";
 import { BaseModel } from "./base.model";
 
 export class DonorModel extends BaseModel {
@@ -30,7 +30,7 @@ export class DonorModel extends BaseModel {
     return `User with id ${userId} is now a donor`;
   }
 
-  static async setDonorInformation(userId: string, body: DonorInformation) {
+  static async setDonorInformation(userId: string, body: IDonorInformation) {
     const DonorInformationToCreate = {
       userId: userId,
       gender: body.gender,
@@ -56,7 +56,7 @@ export class DonorModel extends BaseModel {
     return data;
   }
 
-  static async updateDonorInformation(userId: string, body: DonorInformation) {
+  static async updateDonorInformation(userId: string, body: IDonorInformation) {
     const dataToUpdate = {
       userId: userId,
       gender: body.gender,

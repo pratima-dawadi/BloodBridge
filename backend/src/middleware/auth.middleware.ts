@@ -2,7 +2,7 @@ import { JwtPayload, verify } from "jsonwebtoken";
 import { NextFunction, Response } from "express";
 import { Request } from "../interfaces/auth.interface";
 import config from "../config";
-import { User } from "../interfaces/user.interfaces";
+import { IUser } from "../interfaces/user.interfaces";
 import { UserModel } from "../model/user.model";
 import { stringify } from "querystring";
 import { DonorModel } from "../model/donor.model";
@@ -29,7 +29,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
   }
 
   try {
-    const user = verify(token[1], config.jwt.secret!) as User;
+    const user = verify(token[1], config.jwt.secret!) as IUser;
     req.user = user;
     next();
   } catch (error) {

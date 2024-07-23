@@ -9,7 +9,7 @@ export async function setDonor(
 ) {
   const userId = req.user!.id;
   const data = await DonorService.setDonor(userId);
-  res.json(data);
+  res.json(JSON.stringify(data));
 }
 
 export async function setDonorInformation(req: Request, res: Response) {

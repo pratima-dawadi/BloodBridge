@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
   id: string;
   name: string;
   email: string;
@@ -10,12 +10,12 @@ export interface User {
   donor_flag: boolean;
 }
 
-export interface HealthCenter extends User {
+export interface IHealthCenter extends IUser {
   images: string;
   type: string;
 }
 
-export interface DonorInformation extends User {
+export interface IDonorInformation extends IUser {
   gender: string;
   bloodGroup: string;
   lastDonated: Date;

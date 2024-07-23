@@ -1,4 +1,4 @@
-import { HealthCenter, User } from "../interfaces/user.interfaces";
+import { IHealthCenter, IUser } from "../interfaces/user.interfaces";
 import { BaseModel } from "./base.model";
 
 export class UserModel extends BaseModel {
@@ -14,7 +14,7 @@ export class UserModel extends BaseModel {
     return data;
   }
 
-  static async updateUser(id: number, user: User) {
+  static async updateUser(id: number, user: IUser) {
     const updateData = {
       name: user.name,
       email: user.email,
@@ -40,7 +40,7 @@ export class UserModel extends BaseModel {
     return returnData;
   }
 
-  static async createUser(user: User) {
+  static async createUser(user: IUser) {
     const userToCreate = {
       name: user.name,
       email: user.email,
@@ -56,7 +56,7 @@ export class UserModel extends BaseModel {
     return data;
   }
 
-  static async createHealthCenter(user: HealthCenter) {
+  static async createHealthCenter(user: IHealthCenter) {
     const insertIntoUser = {
       name: user.name,
       email: user.email,
@@ -77,7 +77,6 @@ export class UserModel extends BaseModel {
         .where("email", user.email)
         .first();
       const userId = await getInsertedUser;
-
       const insertIntoHealthCenter = {
         userId: userId.id,
         image: user.images,
@@ -98,7 +97,6 @@ export class UserModel extends BaseModel {
     const data = await query;
 
     if (!data) {
-      console.log(`User with id ${id} not found`);
       return "User not found";
     }
     return `User with id ${id} deleted`;
