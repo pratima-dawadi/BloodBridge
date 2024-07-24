@@ -53,7 +53,9 @@ export class UserModel extends BaseModel {
     };
     const query = this.queryBuilder().insert(userToCreate).into("users");
     const data = await query;
-    return data;
+    if (data) {
+      return `User with email ${user.email} created`;
+    }
   }
 
   static async createHealthCenter(user: IHealthCenter) {
@@ -88,7 +90,9 @@ export class UserModel extends BaseModel {
         .into("health_center");
 
       const data2 = await query2;
-      return data2;
+      if (data2) {
+        return `Health center with email ${user.email} created`;
+      }
     }
   }
 

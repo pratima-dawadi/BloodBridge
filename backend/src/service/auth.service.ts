@@ -31,7 +31,7 @@ export async function login(body: Pick<IUser, "email" | "password">) {
     permission: existingUser.permission,
   };
 
-  const acessToken = sign(payload, config.jwt.secret!, {
+  const accessToken = sign(payload, config.jwt.secret!, {
     expiresIn: config.jwt.accessTokenExpiryMS,
   });
 
@@ -40,7 +40,7 @@ export async function login(body: Pick<IUser, "email" | "password">) {
   });
 
   return {
-    acessToken,
+    accessToken,
     refreshToken,
   };
 }

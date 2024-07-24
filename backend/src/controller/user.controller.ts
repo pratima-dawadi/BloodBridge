@@ -22,13 +22,13 @@ export async function updateUser(req: Request, res: Response) {
 export async function createUser(req: Request, res: Response) {
   const { body } = req;
   const data = await UserService.createUser(body);
-  res.json(`Created User: ${JSON.stringify(data)}`);
+  res.json(data);
 }
 
 export async function createHealthCenter(req: Request, res: Response) {
   const { body } = req;
   const data = await UserService.createHealthCenter(body);
-  res.json(`Created User: ${data}`);
+  res.json(data);
 }
 
 export async function deleteUser(req: Request, res: Response) {
