@@ -6,6 +6,16 @@ export async function getUsers(req: Request, res: Response) {
   res.json(data);
 }
 
+export async function getHealthCenters(req: Request, res: Response) {
+  const data = await UserService.getHealthCenters();
+  res.json(data);
+}
+
+export async function getDonors(req: Request, res: Response) {
+  const data = await UserService.getDonors();
+  res.json(data);
+}
+
 export async function getUserById(req: Request, res: Response) {
   const id = parseInt(req.params.id);
   const data = await UserService.getUserById(id);

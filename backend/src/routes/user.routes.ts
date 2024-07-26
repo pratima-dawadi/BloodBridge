@@ -6,6 +6,8 @@ import {
   getUserById,
   getUsers,
   updateUser,
+  getHealthCenters,
+  getDonors,
 } from "../controller/user.controller";
 import { authenticate } from "../middleware/auth.middleware";
 import { validateReqBody } from "../middleware/validator.middleware";
@@ -18,9 +20,12 @@ const router = express();
 
 router.use(express.json());
 
-router.get("/", authenticate, getUsers);
+router.get("/", getUsers);
 
-router.get("/:id", authenticate, getUserById);
+router.get("/healthcenter", getHealthCenters);
+router.get("/donor", getDonors);
+
+router.get("/:id", getUserById);
 
 router.put(
   "/:id",

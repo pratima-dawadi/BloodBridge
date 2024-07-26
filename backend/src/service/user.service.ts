@@ -6,6 +6,14 @@ export function getUsers() {
   return UserModel.UserModel.getUsers();
 }
 
+export function getHealthCenters() {
+  return UserModel.UserModel.getHealthCenters();
+}
+
+export function getDonors() {
+  return UserModel.UserModel.getDonors();
+}
+
 export function getUserById(id: number) {
   return UserModel.UserModel.getUserById(id);
 }
