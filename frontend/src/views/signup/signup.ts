@@ -20,8 +20,8 @@ export const handleSignUpUser = async (event: Event) => {
     document.getElementById("locationInput") as HTMLInputElement
   ).value;
 
-  const user_role = "user";
-  const donor_flag = false;
+  const userRole = "user";
+  const donorFlag = false;
   const user = {
     name,
     email,
@@ -29,8 +29,8 @@ export const handleSignUpUser = async (event: Event) => {
     phone,
     district,
     location,
-    user_role,
-    donor_flag,
+    userRole,
+    donorFlag,
   };
   try {
     const response = await signUpUser(user);
@@ -61,13 +61,13 @@ export const handleSignUpHealthCenter = async (event: Event) => {
     document.getElementById("locationInput") as HTMLInputElement
   ).value;
 
-  const images = (document.getElementById("imageInput") as HTMLInputElement)
+  const image = (document.getElementById("imageInput") as HTMLInputElement)
     .value;
 
   const type = (document.getElementById("typeInput") as HTMLInputElement).value;
 
-  const user_role = "health_center";
-  const donor_flag = false;
+  const userRole = "health_center";
+  const donorFlag = false;
   const healthcenter = {
     name,
     email,
@@ -75,9 +75,9 @@ export const handleSignUpHealthCenter = async (event: Event) => {
     phone,
     district,
     location,
-    user_role,
-    donor_flag,
-    images,
+    userRole,
+    donorFlag,
+    image,
     type,
   };
   try {

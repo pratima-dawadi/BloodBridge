@@ -4,6 +4,7 @@ import {
   handleSignUpUser,
 } from "../../views/signup/signup";
 import render from "../render";
+import { homeEventHandlers } from "./home.eventHandlers";
 
 export const addEventListeners = () => {
   document
@@ -27,6 +28,8 @@ export const addEventListeners = () => {
   document
     .getElementById("signUpHealthCenter-form")
     ?.addEventListener("submit", handleSignUpHealthCenter);
+
+  homeEventHandlers();
 };
 
 export const navigateTo = (path: string) => {

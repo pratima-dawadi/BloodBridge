@@ -6,16 +6,18 @@ export interface IUser {
   phone: string;
   district: string;
   location: string;
-  user_role: string;
-  donor_flag: boolean;
+  userRole: string;
+  donorFlag: boolean;
 }
 
 export interface IHealthCenter extends IUser {
-  images: string;
+  userId?: string;
+  image: string;
   type: string;
 }
 
 export interface IDonorInformation extends IUser {
+  userId?: string;
   gender: string;
   bloodGroup: string;
   lastDonated: Date;

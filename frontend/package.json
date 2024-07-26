@@ -15,8 +15,10 @@
     "vite": "^5.3.4"
   },
   "dependencies": {
+    "@types/google.maps": "^3.55.12",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
+    "jwt-decode": "^4.0.0",
     "universal-router": "^9.2.0"
   }
 }
