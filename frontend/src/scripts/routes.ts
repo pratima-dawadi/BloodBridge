@@ -1,5 +1,4 @@
 import UniversalRouter from "universal-router";
-
 const routes = [
   {
     path: "/",
@@ -25,6 +24,13 @@ const routes = [
     path: "/signuphealthcenter",
     action: async () =>
       fetch("./src/views/signup/signupHealthCenter.html").then((response) =>
+        response.text()
+      ),
+  },
+  {
+    path: "/getlist",
+    action: async () =>
+      fetch("./src/views/home/getList.html").then((response) =>
         response.text()
       ),
   },

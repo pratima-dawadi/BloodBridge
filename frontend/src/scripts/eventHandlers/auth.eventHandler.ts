@@ -32,7 +32,7 @@ export const addEventListeners = () => {
   homeEventHandlers();
 };
 
-export const navigateTo = (path: string) => {
+export const navigateTo = async (path: string) => {
   window.history.pushState({}, "", path);
-  render(path);
+  await render(path);
 };

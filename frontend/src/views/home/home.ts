@@ -2,11 +2,13 @@ import {
   IDonorInformation,
   IHealthCenter,
 } from "../../interfaces/user.interfaces";
-import { navigateTo } from "../../scripts/eventHandlers/auth.eventHandler";
-import { getDonors, getHealthCenters } from "../../services/home.services";
-import { donateBlood } from "../donateRequest/donate";
-import { requestBlood } from "../donateRequest/request";
-import { getDetails } from "./details";
+import {
+  getDonors,
+  getHealthCenters,
+  getDonationCamps,
+} from "../../services/home.services";
+import { handleButtons } from "../../scripts/eventHandlers/home.eventHandlers";
+import { IDonationCamp } from "../../interfaces/donationCamp.interfaces";
 
 export const handleHealthCenterList = async () => {
   try {
@@ -106,45 +108,50 @@ export const handleDonorList = async () => {
   }
 };
 
-export function handleButtons() {
-  document.querySelectorAll(".view-detail[data-id]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const target = event.currentTarget as HTMLButtonElement;
-      const id = target.getAttribute("data-id");
-      if (id) {
-        getDetails(id);
-        navigateTo("/details");
-      }
-    });
-  });
-
-  document.querySelectorAll(".request-blood[data-id]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const target = event.currentTarget as HTMLButtonElement;
-      const id = target.getAttribute("data-id");
-      const requesterInfo = target.getAttribute("data-request");
-      const userType = target.getAttribute("user-type");
-      if (id) {
-        const requesterData = JSON.parse(requesterInfo!);
-        console.log("Requester Data:", requesterData);
-        requestBlood(id, requesterData!, userType!);
-        navigateTo("/requestblood");
-      }
-    });
-  });
-
-  document.querySelectorAll(".donate-blood[data-id]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const target = event.currentTarget as HTMLButtonElement;
-      const id = target.getAttribute("data-id");
-      const donorInfo = target.getAttribute("data-request");
-      const userType = target.getAttribute("user-type");
-      if (id) {
-        const donorData = JSON.parse(donorInfo!);
-        console.log("Donor Data:", donorData);
-        donateBlood(id, donorData!, userType!);
-        navigateTo("/donateblood");
-      }
-    });
-  });
-}
+export const handleDonationCampList = async () => {
+  try {
+    const donationCamp = await getDonationCamps();
+    const detailsDiv = document.getElementById("get-details");
+    if (detailsDiv) {
+      detailsDiv.innerHTML = donationCamp
+        .map(
+          (donationCamp: IDonationCamp) => `
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">ID: ${
+                      donationCamp.healthCenterId
+                    }</h5>
+                    <p class="card-text"><strong>Donation Camp title:</strong> ${
+                      donationCamp.name
+                    }</p>
+                    <p class="card-text"><strong>Location:</strong>${
+                      donationCamp.location
+                    }, ${donationCamp.district}</p>
+                    <p class="card-text"><strong>On:</strong> ${
+                      donationCamp.date
+                    }</p>
+                    <p class="card-text"><strong>Time:</strong> ${
+                      donationCamp.timeFrame
+                    }</p>
+                    <button class="btn btn-secondary view-detail" data-id="${
+                      donationCamp.healthCenterId
+                    }">View Details</button>
+                    <button class ="btn btn-secondary join-camp" user-type="user" data-request='${JSON.stringify(
+                      donationCamp
+                    )}'>Join Camp</button>                  
+          </div>
+          </div>
+              `
+        )
+        .join("");
+      handleButtons();
+    }
+  } catch (error) {
+    console.error("Error fetching health center details:", error);
+    const detailsDiv = document.getElementById("get-details");
+    if (detailsDiv) {
+      detailsDiv.innerHTML =
+        '<p class="text-danger">Failed to load health center details.</p>';
+    }
+  }
+};

@@ -13,6 +13,12 @@ export async function getDonors() {
   return response.data;
 }
 
+export async function getDonationCamps() {
+  const response = await axios.get(`${baseUrl}/donationcamp`);
+  console.log("Response from getDonationCamps:", response.data);
+  return response.data;
+}
+
 export async function viewDetails(id: string) {
   const sent_url = `${baseUrl}/users/${id}`;
   console.log("sent_url:", sent_url);
