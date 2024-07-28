@@ -1,0 +1,172 @@
+#filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #fffce0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#filter-form .form-group {
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#filter-form .form-group label {
+  display: none; /* Hidden labels */
+}
+
+#filter-form .form-group input,
+#filter-form .form-group select {
+  width: 180px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #495057;
+  font-size: 1rem;
+}
+
+#filter-form .form-group input:focus,
+#filter-form .form-group select:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+#filter-form .btn-primary {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+}
+
+#filter-form .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+#filter-form .btn-primary:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+#filter-form .form-group:last-of-type {
+  margin-right: 0;
+}
+
+#filter-form .form-group select {
+  width: 200px;
+}
+
+#filter-form .form-group input[type="text"] {
+  width: 200px;
+}
+
+#filter-form .form-group select option {
+  color: #495057;
+  background-color: #fff;
+}
+
+#filter-form .form-group select option:focus {
+  background-color: #e9ecef;
+}
+
+#filter-form .form-group input::placeholder {
+  color: #6c757d;
+  font-style: italic;
+}
+
+#filter-form .form-group select::placeholder {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/*For cards*/
+#get-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  flex: 1 1 calc(33% - 1rem);
+  box-sizing: border-box;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #fff6f6;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-group .btn {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.button-group .btn:last-child {
+  margin-right: 0;
+}
+
+.card-body strong {
+  font-weight: bold;
+  color: #343a40;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.875rem;
+  }
+}

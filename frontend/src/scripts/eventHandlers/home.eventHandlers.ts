@@ -7,6 +7,7 @@ import { navigateTo } from "../../scripts/eventHandlers/auth.eventHandler";
 import { donateBlood } from "../../views/donateRequest/donate";
 import { requestBlood } from "../../views/donateRequest/request";
 import { getDetails } from "../../views/home/details";
+import { handleSearchButton } from "../../views/filter/filter";
 
 export const homeEventHandlers = () => {
   document
@@ -26,6 +27,15 @@ export const homeEventHandlers = () => {
     ?.addEventListener("click", () => {
       navigateTo("/getlist");
       handleDonationCampList();
+    });
+
+  document
+    .getElementById("filter-form")
+    ?.addEventListener("submit", async (event) => {
+      const target = event.currentTarget as HTMLFormElement;
+      const getType = target.getAttribute("data-id");
+      console.log(getType);
+      handleSearchButton(event);
     });
 };
 

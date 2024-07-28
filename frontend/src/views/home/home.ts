@@ -9,11 +9,13 @@ import {
 } from "../../services/home.services";
 import { handleButtons } from "../../scripts/eventHandlers/home.eventHandlers";
 import { IDonationCamp } from "../../interfaces/donationCamp.interfaces";
+import { getUserType } from "../filter/filter";
 
 export const handleHealthCenterList = async () => {
   try {
     const healthCenters = await getHealthCenters();
     console.log("Health Centers:", healthCenters);
+    getUserType("health_center");
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
       detailsDiv.innerHTML = healthCenters
@@ -21,8 +23,9 @@ export const handleHealthCenterList = async () => {
           (center: IHealthCenter) => `
               <div class="card">
                 <div class="card-body">
+                <img src="../../../public/assets/img/bloodbank.png" alt="Health Center Image" style="align-self:center">
                   <h5 class="card-title">ID: ${center.id}</h5>
-                  <p class="card-text"><strong>Name:</strong> ${center.name}</p>
+                  <p class="card-title"><strong></strong> ${center.name}</p>
                   <p class="card-text"><strong>Phone:</strong> ${
                     center.phone
                   }</p>
@@ -30,6 +33,7 @@ export const handleHealthCenterList = async () => {
                     center.location
                   }, ${center.district}</p>
                   <p class="card-text"><strong>Type:</strong> ${center.type}</p>
+                  <div class="button-group">
                   <button class="btn btn-secondary view-detail" data-id="${
                     center.userId
                   }">View Details</button>
@@ -43,6 +47,7 @@ export const handleHealthCenterList = async () => {
                   }" user-type="health_center" data-request='${JSON.stringify(
             center
           )}'>Donate Blood</button>
+          </div>
                 </div>
               </div>
             `
@@ -63,6 +68,7 @@ export const handleHealthCenterList = async () => {
 export const handleDonorList = async () => {
   try {
     const donors = await getDonors();
+    getUserType("user");
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
       detailsDiv.innerHTML = donors
@@ -71,9 +77,7 @@ export const handleDonorList = async () => {
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">ID: ${donor.id}</h5>
-                    <p class="card-text"><strong>Name:</strong> ${
-                      donor.name
-                    }</p>
+                    <p class="card-title"><strong></strong> ${donor.name}</p>
                     <p class="card-text"><strong>Gender:</strong> ${
                       donor.gender
                     }</p>
@@ -83,14 +87,16 @@ export const handleDonorList = async () => {
                     <p class="card-text"><strong>Last Donated:</strong> ${
                       donor.lastDonated
                     }</p>
+                    <div class="button-group">
                     <button class="btn btn-secondary view-detail" data-id="${
-                      donor.id
+                      donor.userId
                     }">View Details</button>
                     <button class ="btn btn-secondary request-blood" data-id="${
                       donor.userId
                     }" user-type="user" data-request='${JSON.stringify(
             donor
-          )}'>Request Blood</button>                  
+          )}'>Request Blood</button>
+          </div>
           </div>
           </div>
               `
@@ -121,7 +127,7 @@ export const handleDonationCampList = async () => {
                     <h5 class="card-title">ID: ${
                       donationCamp.healthCenterId
                     }</h5>
-                    <p class="card-text"><strong>Donation Camp title:</strong> ${
+                    <p class="card-title"><strong>Donation Camp title:</strong> ${
                       donationCamp.name
                     }</p>
                     <p class="card-text"><strong>Location:</strong>${
@@ -133,12 +139,15 @@ export const handleDonationCampList = async () => {
                     <p class="card-text"><strong>Time:</strong> ${
                       donationCamp.timeFrame
                     }</p>
+                    <div class="button-group">
+
                     <button class="btn btn-secondary view-detail" data-id="${
                       donationCamp.healthCenterId
                     }">View Details</button>
                     <button class ="btn btn-secondary join-camp" user-type="user" data-request='${JSON.stringify(
                       donationCamp
-                    )}'>Join Camp</button>                  
+                    )}'>Join Camp</button> 
+          </div>
           </div>
           </div>
               `

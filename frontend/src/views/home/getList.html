@@ -1,2 +1,45 @@
-<h1>Get List</h1>
+<form id="filter-form" class="form-inline mb-4">
+  <div class="form-group mr-3">
+    <label for="filterName" class="sr-only">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="filterName"
+      placeholder="Name"
+    />
+  </div>
+  <div class="form-group mr-3">
+    <label for="filterDistrict" class="sr-only">District</label>
+    <select class="form-control" id="filterDistrict">
+      <option value="">District</option>
+      <option value="Kathmandu">Kathmandu</option>
+      <option value="Lalitpur">Lalitpur</option>
+      <option value="Bhaktapur">Bhaktapur</option>
+    </select>
+  </div>
+  <div class="form-group mr-3">
+    <label for="filterLocation" class="sr-only">Location</label>
+    <input
+      type="text"
+      class="form-control"
+      id="filterLocation"
+      placeholder="Location"
+    />
+  </div>
+  <div class="form-group mr-3">
+    <label for="filterBloodType" class="sr-only">Blood Type</label>
+    <select class="form-control" id="filterBloodType">
+      <option value="">Blood Type</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
 <div id="get-details" class="mt-4"></div>

@@ -23,3 +23,10 @@ export interface IDonorInformation extends IUser {
   weight: number;
   age: number;
 }
+
+export interface getUserQuery {
+  name?: string;
+  district?: string;
+  location?: string;
+  bloodGroup?: string;
+}
