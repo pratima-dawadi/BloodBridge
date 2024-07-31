@@ -20,7 +20,8 @@ export async function setDonorInformation(req: Request, res: Response) {
 }
 
 export async function getDonorInformation(req: Request, res: Response) {
-  const data = await DonorService.getDonorInformation();
+  const userId = req.user!.id;
+  const data = await DonorService.getDonorInformation(userId);
   res.json(data);
 }
 

@@ -38,3 +38,29 @@ export async function requestBlood(supplierId: string, requestInfo: IRequest) {
     return error;
   }
 }
+
+export async function getRequestHistory() {
+  try {
+    const response = await axios.get(`${baseUrl}/request`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getDonationHistory() {
+  try {
+    const response = await axios.get(`${baseUrl}/donate`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}

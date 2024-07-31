@@ -33,3 +33,31 @@ export async function requestBlood(
     next(error);
   }
 }
+
+export async function requestHistory(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const userId = req.user!.id;
+    const data = await donateRequestService.requestHistory(userId);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function donateHistory(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const userId = req.user!.id;
+    const data = await donateRequestService.donateHistory(userId);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}

@@ -20,14 +20,14 @@ export class DonorModel extends BaseModel {
       .first();
     const checkData = await checkFlag;
     if (checkData.donorFlag === true) {
-      return `User with id ${userId} is already a donor`;
+      return `User is already a donor`;
     }
     const query = this.queryBuilder()
       .update({ donor_flag: true })
       .from("users")
       .where("id", userId);
     const data = await query;
-    return `User with id ${userId} is now a donor`;
+    return `User is now a donor`;
   }
 
   static async setDonorInformation(userId: string, body: IDonorInformation) {
@@ -45,13 +45,17 @@ export class DonorModel extends BaseModel {
       .into("donor_information");
     const data = await query;
     if (data) {
-      return `Donor information for user with id ${userId} is created`;
+      return `Donor information for user  is created`;
     }
-    return `Unable to create donor information for user with id ${userId}`;
+    return `Unable to create donor information for user`;
   }
 
-  static async getDonorInformation() {
-    const query = this.queryBuilder().select("*").from("donor_information");
+  static async getDonorInformation(userId: string) {
+    const query = this.queryBuilder()
+      .select("*")
+      .from("donor_information")
+      .where("user_id", userId)
+      .first();
     const data = await query;
     return data;
   }
@@ -72,8 +76,8 @@ export class DonorModel extends BaseModel {
       .where("user_id", userId);
     const data = await query;
     if (data) {
-      return `Donor information for user with id ${userId} is updated`;
+      return `Donor information updated`;
     }
-    return `Unable to update donor information for user with id ${userId}`;
+    return `Unable to update donor information for user`;
   }
 }

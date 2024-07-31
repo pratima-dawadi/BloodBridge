@@ -1,8 +1,20 @@
-import { Request, Response } from "express";
+import { Response } from "express";
+import { Request } from "../interfaces/auth.interface";
 import * as UserService from "../service/user.service";
 
 export async function getUsers(req: Request, res: Response) {
   const data = await UserService.getUsers();
+  res.json(data);
+}
+
+export async function getId(req: Request, res: Response) {
+  const userId = req.user!.id;
+  res.json(userId);
+}
+
+export async function getHealthCenterID(req: Request, res: Response) {
+  const userId = req.user!.id;
+  const data = await UserService.getHealthCenterID(userId);
   res.json(data);
 }
 
@@ -22,10 +34,16 @@ export async function getUserById(req: Request, res: Response) {
   res.json(data);
 }
 
+export async function getDetails(req: Request, res: Response) {
+  const userId = req.user!.id;
+  const data = await UserService.getDetails(userId);
+  res.json(data);
+}
+
 export async function updateUser(req: Request, res: Response) {
-  const id = parseInt(req.params.id);
+  const id = req.user!.id;
   const { body } = req;
-  const data = await UserService.updateUser(id, body);
+  const data = await UserService.updateUser(+id, body);
   res.json(`Updated User: ${JSON.stringify(data)}`);
 }
 

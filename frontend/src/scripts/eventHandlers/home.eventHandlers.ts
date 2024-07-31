@@ -12,21 +12,23 @@ import { handleSearchButton } from "../../views/filter/filter";
 export const homeEventHandlers = () => {
   document
     .getElementById("get-health-center-list")
-    ?.addEventListener("click", () => {
-      navigateTo("/getlist");
-      handleHealthCenterList();
+    ?.addEventListener("click", async () => {
+      await navigateTo("/getlist");
+      await handleHealthCenterList();
     });
 
-  document.getElementById("get-donor-list")?.addEventListener("click", () => {
-    navigateTo("/getlist");
-    handleDonorList();
-  });
+  document
+    .getElementById("get-donor-list")
+    ?.addEventListener("click", async () => {
+      await navigateTo("/getlist");
+      await handleDonorList();
+    });
 
   document
     .getElementById("get-donation-camp-list")
-    ?.addEventListener("click", () => {
-      navigateTo("/getlist");
-      handleDonationCampList();
+    ?.addEventListener("click", async () => {
+      await navigateTo("/getlist");
+      await handleDonationCampList();
     });
 
   document
@@ -59,7 +61,7 @@ export async function handleButtons() {
       const userType = target.getAttribute("user-type");
       if (id) {
         const supplierData = JSON.parse(supplierInfo!);
-        console.log("Requester Data:", supplierData);
+        console.log("supplier Data:", supplierData);
         await navigateTo("/requestblood");
         requestBlood(id, supplierData!, userType!);
       }

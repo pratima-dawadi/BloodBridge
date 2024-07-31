@@ -3,6 +3,7 @@ import { BaseModel } from "./base.model";
 
 export class InventoryModel extends BaseModel {
   static async createInventory(userId: string, body: IInventory) {
+    console.log(`useriD: ${userId} and inventory: ${JSON.stringify(body)}`);
     const healthCenterId = this.queryBuilder()
       .select("id")
       .from("health_center")
@@ -33,6 +34,27 @@ export class InventoryModel extends BaseModel {
     return data;
   }
 
+  static async getInventoryById(userId: string) {
+    try {
+      const healthCenterId = this.queryBuilder()
+        .select("id")
+        .from("health_center")
+        .where("userId", +userId)
+        .first();
+      const id = await healthCenterId;
+      const query = this.queryBuilder()
+        .select("bloodType")
+        .sum("quantity as totalQuantity")
+        .from("inventory")
+        .where("healthCenterId", id.id)
+        .groupBy("bloodType");
+      const data = await query;
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
   static async updateInventory(userId: string, body: IInventory) {
     const healthCenterId = this.queryBuilder()
       .select("id")
@@ -56,5 +78,23 @@ export class InventoryModel extends BaseModel {
       return `Inventory for health center with id ${userId} is updated`;
     }
     return `Unable to update inventory for health center with id ${userId}`;
+  }
+
+  static async getParticularInventory(userId: string) {
+    const healthCenterId = this.queryBuilder()
+      .select("id")
+      .from("health_center")
+      .where("userId", userId)
+      .first();
+    const dataHealthCenterId = await healthCenterId;
+
+    const query = this.queryBuilder()
+      .select("bloodType")
+      .sum("quantity as totalQuantity")
+      .from("inventory")
+      .where("healthCenterId", dataHealthCenterId.id)
+      .groupBy("bloodType");
+    const data = await query;
+    return data;
   }
 }

@@ -52,4 +52,30 @@ export class DonateRequestModel extends BaseModel {
       return error;
     }
   }
+
+  static async requestHistory(userId: string) {
+    try {
+      const query = this.queryBuilder()
+        .select("*")
+        .from("request")
+        .where("requesterId", userId);
+      const data = await query;
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async donateHistory(userId: string) {
+    try {
+      const query = this.queryBuilder()
+        .select("*")
+        .from("donation")
+        .where("donorId", userId);
+      const data = await query;
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
 }

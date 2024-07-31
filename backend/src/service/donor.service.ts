@@ -12,8 +12,8 @@ export async function setDonorInformation(
   return await DonorModel.setDonorInformation(userId, body);
 }
 
-export async function getDonorInformation() {
-  return await DonorModel.getDonorInformation();
+export async function getDonorInformation(userId: string) {
+  return await DonorModel.getDonorInformation(userId);
 }
 
 export async function updateDonorInformation(

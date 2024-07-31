@@ -8,3 +8,11 @@ export function donateBlood(id: string, userId: string, body: IDonate) {
 export function requestBlood(id: string, userId: string, body: IRequest) {
   return DonateRequestModel.DonateRequestModel.requestBlood(id, userId, body);
 }
+
+export function requestHistory(userId: string) {
+  return DonateRequestModel.DonateRequestModel.requestHistory(userId);
+}
+
+export function donateHistory(userId: string) {
+  return DonateRequestModel.DonateRequestModel.donateHistory(userId);
+}

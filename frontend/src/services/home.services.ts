@@ -27,3 +27,10 @@ export async function viewDetails(id: string) {
   console.log("Response from viewHealthCenterDetails:", response.data);
   return response.data;
 }
+
+export async function getInventoryById(id: string) {
+  console.log(`sent url: ${baseUrl}/inventory/${id}`);
+  const response = await axios.get(`${baseUrl}/inventory/${id}`);
+  console.log("Response from getInventoryById:", response.data);
+  return response.data;
+}

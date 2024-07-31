@@ -2,9 +2,11 @@ import { viewDetails } from "../../services/home.services";
 
 export async function getDetails(id: string) {
   const response = await viewDetails(id);
+  console.log("Response from getDetails:", response);
+
   const detailsDiv = document.getElementById("view-details");
-  if (detailsDiv && response.length > 0) {
-    const item = await response[0];
+  if (detailsDiv) {
+    const item = await response;
     detailsDiv.innerHTML = `
       <div class="card mb-3">
         <div class="card-body">
@@ -23,8 +25,6 @@ export async function getDetails(id: string) {
             item.createdAt
           ).toLocaleString()}</p>
           <div>
-            <h6>Map:</h6>
-            <div id="map" style="width: 600px; height: 450px;"></div>
           </div>
         </div>
       </div>

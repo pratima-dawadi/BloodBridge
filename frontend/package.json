@@ -10,15 +10,20 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^22.0.0",
     "@types/universal-router": "^8.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
   },
   "dependencies": {
+    "@arction/lcjs": "^5.2.0",
     "@types/google.maps": "^3.55.12",
     "axios": "^1.7.2",
+    "chart.js": "^4.4.3",
     "cors": "^2.8.5",
     "jwt-decode": "^4.0.0",
+    "multer": "^1.4.5-lts.1",
     "universal-router": "^9.2.0"
   }
 }

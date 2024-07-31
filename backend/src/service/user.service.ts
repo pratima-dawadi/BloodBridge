@@ -6,6 +6,10 @@ export function getUsers() {
   return UserModel.UserModel.getUsers();
 }
 
+export function getHealthCenterID(userId: string) {
+  return UserModel.UserModel.getHealthCenterID(userId);
+}
+
 export function getHealthCenters() {
   return UserModel.UserModel.getHealthCenters();
 }
@@ -16,6 +20,10 @@ export function getDonors() {
 
 export function getUserById(id: number) {
   return UserModel.UserModel.getUserById(id);
+}
+
+export function getDetails(userId: string) {
+  return UserModel.UserModel.getDetails(userId);
 }
 
 export function updateUser(id: number, user: IUser) {

@@ -1,0 +1,40 @@
+.d-flex {
+  display: flex;
+}
+
+.sidebar {
+  width: 25%;
+  padding: 2%;
+}
+
+.sidebar .btn {
+  background-color: #343a40;
+  color: white;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .btn i {
+  margin: 5%;
+}
+
+.sidebar .btn:hover {
+  opacity: 0.6;
+}
+
+.sidebar #set-donor-button {
+  border-radius: 10%;
+  background-color: red;
+  max-width: 50%;
+  align-content: center;
+  margin-left: 20%;
+}
+#content {
+  height: 80vh;
+}
+
+#main-dashboard {
+  height: 100%;
+  background: linear-gradient(360deg, #fbcdcd, #f6ecdd);
+}

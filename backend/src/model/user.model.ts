@@ -1,6 +1,7 @@
 import { IHealthCenter, IUser } from "../interfaces/user.interfaces";
 import { BaseModel } from "./base.model";
 import db from "../utils/db";
+import { get } from "http";
 
 export class UserModel extends BaseModel {
   static async getUsers() {
@@ -8,6 +9,16 @@ export class UserModel extends BaseModel {
       .select("*")
       .from("users")
       .where({ userRole: "user" });
+    const data = await query;
+    return data;
+  }
+
+  static async getHealthCenterID(userId: string) {
+    const query = this.queryBuilder()
+      .select("id")
+      .from("health_center")
+      .where("userId", userId)
+      .first();
     const data = await query;
     return data;
   }
@@ -47,9 +58,57 @@ export class UserModel extends BaseModel {
   }
 
   static async getUserById(id: number) {
-    const query = this.queryBuilder().select("*").from("users").where("id", id);
+    const query = this.queryBuilder()
+      .select("*")
+      .from("users")
+      .where("id", id)
+      .first();
     const data = await query;
     return data;
+  }
+
+  static async getDetails(userId: string) {
+    const getRole = await this.getUserRole(userId);
+    if (getRole.userRole === "user") {
+      const query = db("users").select(
+        "users.id as userId",
+        "users.name",
+        "users.email",
+        "users.phone",
+        "users.district",
+        "users.location",
+        "users.userRole",
+        "users.donorFlag",
+        "donorInformation.gender",
+        "donorInformation.bloodGroup",
+        "donorInformation.lastDonated",
+        "donorInformation.donatedCount",
+        "donorInformation.weight",
+        "donorInformation.age"
+      ).leftJoin!("donorInformation", "users.id", "donorInformation.userId")
+        .where("users.id", userId)
+        .first();
+
+      const data = await query;
+      return data;
+    } else if (getRole.userRole === "health_center") {
+      const query = db("users")
+        .select(
+          "users.id as userId",
+          "users.name",
+          "users.email",
+          "users.phone",
+          "users.district",
+          "users.location",
+          "users.userRole",
+          "healthCenter.*"
+        )
+        .innerJoin("healthCenter", "users.id", "healthCenter.userId")
+        .where("users.id", userId)
+        .first();
+      const data = await query;
+      return data;
+    }
   }
 
   static async updateUser(id: number, user: IUser) {
@@ -60,7 +119,6 @@ export class UserModel extends BaseModel {
       phone: user.phone,
       district: user.district,
       location: user.location,
-      user_role: "user",
       donor_flag: user.donor_flag,
     };
     try {
@@ -75,7 +133,7 @@ export class UserModel extends BaseModel {
         .from("users")
         .where("id", id);
       const returnData = await returnQuery;
-      return returnData;
+      return `User updated`;
     } catch (error) {
       return error;
     }

@@ -1,9 +1,11 @@
+import { handleDashboardLoad } from "../../views/dashboard/dashboard";
 import handleLogin from "../../views/login/login";
 import {
   handleSignUpHealthCenter,
   handleSignUpUser,
 } from "../../views/signup/signup";
 import render from "../render";
+import { healthCenterDashboard, userdashboard } from "./dashboard.eventHandler";
 import { homeEventHandlers } from "./home.eventHandlers";
 
 export const addEventListeners = () => {
@@ -30,6 +32,9 @@ export const addEventListeners = () => {
     ?.addEventListener("submit", handleSignUpHealthCenter);
 
   homeEventHandlers();
+  handleDashboardLoad();
+  userdashboard();
+  healthCenterDashboard();
 };
 
 export const navigateTo = async (path: string) => {
