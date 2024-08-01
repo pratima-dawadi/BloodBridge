@@ -22,6 +22,10 @@ export function getUserById(id: number) {
   return UserModel.UserModel.getUserById(id);
 }
 
+export function getUsersDetailsById(id: number) {
+  return UserModel.UserModel.getUsersDetailsById(id);
+}
+
 export function getDetails(userId: string) {
   return UserModel.UserModel.getDetails(userId);
 }

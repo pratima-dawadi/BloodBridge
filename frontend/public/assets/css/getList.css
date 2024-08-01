@@ -147,6 +147,21 @@
   color: #343a40;
 }
 
+.health-center-image-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: 1rem;
+}
+
+.health-center-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 @media (max-width: 1200px) {
   .card {
     flex: 1 1 calc(50% - 1rem);

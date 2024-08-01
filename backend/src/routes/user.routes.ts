@@ -11,6 +11,7 @@ import {
   getDetails,
   getId,
   getHealthCenterID,
+  getUsersDetailsById,
 } from "../controller/user.controller";
 import { authenticate } from "../middleware/auth.middleware";
 import { validateReqBody } from "../middleware/validator.middleware";
@@ -18,6 +19,7 @@ import {
   createUserBodySchema,
   updateUserBodySchema,
 } from "../schema/user.schema";
+import { upload } from "../middleware/multer.middleware";
 
 const router = express();
 
@@ -33,6 +35,8 @@ router.get("/donor", getDonors);
 router.get("/details", authenticate, getDetails);
 router.get("/:id", getUserById);
 
+router.get("/details/:id", getUsersDetailsById);
+
 router.put(
   "/update",
   authenticate,
@@ -42,7 +46,7 @@ router.put(
 
 router.post("/signup", validateReqBody(createUserBodySchema), createUser);
 
-router.post("/signup/healthcenter", createHealthCenter);
+router.post("/signup/healthcenter", upload.single("image"), createHealthCenter);
 
 router.delete("/:id", authenticate, deleteUser);
 

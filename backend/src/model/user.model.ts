@@ -67,6 +67,50 @@ export class UserModel extends BaseModel {
     return data;
   }
 
+  static async getUsersDetailsById(id: number) {
+    const getRole = await this.getUserRole(id.toString());
+    if (getRole.userRole === "user") {
+      const query = db("users").select(
+        "users.id as userId",
+        "users.name",
+        "users.email",
+        "users.phone",
+        "users.district",
+        "users.location",
+        "users.userRole",
+        "users.donorFlag",
+        "donorInformation.gender",
+        "donorInformation.bloodGroup",
+        "donorInformation.lastDonated",
+        "donorInformation.donatedCount",
+        "donorInformation.weight",
+        "donorInformation.age"
+      ).leftJoin!("donorInformation", "users.id", "donorInformation.userId")
+        .where("users.id", id)
+        .first();
+
+      const data = await query;
+      return data;
+    } else if (getRole.userRole === "health_center") {
+      const query = db("users")
+        .select(
+          "users.id as userId",
+          "users.name",
+          "users.email",
+          "users.phone",
+          "users.district",
+          "users.location",
+          "users.userRole",
+          "healthCenter.*"
+        )
+        .innerJoin("healthCenter", "users.id", "healthCenter.userId")
+        .where("users.id", id)
+        .first();
+      const data = await query;
+      return data;
+    }
+  }
+
   static async getDetails(userId: string) {
     const getRole = await this.getUserRole(userId);
     if (getRole.userRole === "user") {

@@ -10,6 +10,7 @@ import {
 import { handleButtons } from "../../scripts/eventHandlers/home.eventHandlers";
 import { IDonationCamp } from "../../interfaces/donationCamp.interfaces";
 import { getUserType } from "../filter/filter";
+import { baseUrl } from "../../utils/baseUrl";
 
 export const handleHealthCenterList = async () => {
   try {
@@ -23,8 +24,11 @@ export const handleHealthCenterList = async () => {
           (center: IHealthCenter) => `
               <div class="card">
                 <div class="card-body">
-                <img src="../../../public/assets/img/bloodbank.png" alt="Health Center Image" style="align-self:center">
-                  <h5 class="card-title">ID: ${center.id}</h5>
+                <div class="health-center-image-container">
+                <img src="${baseUrl}/${
+            center.image
+          }" alt="Health Center Image" class="health-center-image">
+          </div>
                   <p class="card-title"><strong></strong> ${center.name}</p>
                   <p class="card-text"><strong>Phone:</strong> ${
                     center.phone
@@ -32,7 +36,6 @@ export const handleHealthCenterList = async () => {
                   <p class="card-text"><strong>Location:</strong> ${
                     center.location
                   }, ${center.district}</p>
-                  <p class="card-text"><strong>Type:</strong> ${center.type}</p>
                   <div class="button-group">
                   <button class="btn btn-secondary view-detail" data-id="${
                     center.userId
@@ -117,6 +120,7 @@ export const handleDonorList = async () => {
 export const handleDonationCampList = async () => {
   try {
     const donationCamp = await getDonationCamps();
+    console.log("Donation Camps:", donationCamp);
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
       detailsDiv.innerHTML = donationCamp
@@ -124,29 +128,12 @@ export const handleDonationCampList = async () => {
           (donationCamp: IDonationCamp) => `
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">ID: ${
-                      donationCamp.healthCenterId
-                    }</h5>
-                    <p class="card-title"><strong>Donation Camp title:</strong> ${
-                      donationCamp.name
-                    }</p>
-                    <p class="card-text"><strong>Location:</strong>${
-                      donationCamp.location
-                    }, ${donationCamp.district}</p>
-                    <p class="card-text"><strong>On:</strong> ${
-                      donationCamp.date
-                    }</p>
-                    <p class="card-text"><strong>Time:</strong> ${
-                      donationCamp.timeFrame
-                    }</p>
+                    <p class="card-title"><strong>Donation Camp Title:</strong> ${donationCamp.name}</p>
+                    <p class="card-text"><strong>Organized by:</strong> ${donationCamp.healthCenterName}</p>
+                    <p class="card-text"><strong>Location:</strong>${donationCamp.location}, ${donationCamp.district}</p>
+                    <p class="card-text"><strong>On:</strong> ${donationCamp.date}</p>
+                    <p class="card-text"><strong>Time:</strong> ${donationCamp.timeFrame}</p>
                     <div class="button-group">
-
-                    <button class="btn btn-secondary view-detail" data-id="${
-                      donationCamp.healthCenterId
-                    }">View Details</button>
-                    <button class ="btn btn-secondary join-camp" user-type="user" data-request='${JSON.stringify(
-                      donationCamp
-                    )}'>Join Camp</button> 
           </div>
           </div>
           </div>

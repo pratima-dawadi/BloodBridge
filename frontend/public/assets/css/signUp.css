@@ -40,7 +40,7 @@
 }
 
 .form-overlay h2 {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 .form-overlay i {
@@ -61,12 +61,27 @@
 .form-group input {
   width: 100%;
   padding: 2%;
-  margin-top: 2%;
+  margin-top: 1%;
+}
+.form-group {
+  margin-bottom: 0.5rem;
 }
 
 .form-overlay .btn-primary {
   margin-top: 4%;
   width: 40%;
+}
+
+.signup-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+  background-color: #e8dad9;
+}
+
+.signup-options a {
+  color: #ff1510;
 }
 
 @media (max-width: 768px) {

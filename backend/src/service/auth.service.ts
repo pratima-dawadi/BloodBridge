@@ -41,6 +41,5 @@ export async function login(body: Pick<IUser, "email" | "password">) {
 
   return {
     accessToken,
-    refreshToken,
   };
 }

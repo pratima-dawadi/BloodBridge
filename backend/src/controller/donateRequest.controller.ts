@@ -61,3 +61,17 @@ export async function donateHistory(
     next(error);
   }
 }
+
+export async function getDonorEmail(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { query } = req;
+    const data = await donateRequestService.getDonorEmail(query);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}

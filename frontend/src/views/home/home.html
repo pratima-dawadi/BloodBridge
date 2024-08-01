@@ -1,127 +1,125 @@
-    <!-- Header Start -->
-    <section id="header">
-        <div class="container">
-            <h1>We are seeking for a better community health.</h1>
-            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora repellat inventore nemo repudiandae
-                ipsum quos.</h4>
-                <div class="details">
+<!-- Header Start -->
+<section id="header">
+  <div class="container">
+    <!-- <video autoplay muted loop id="background-video" style="align-self: center">
+      <source src="../../../public/assets/img/homevideo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video> -->
+    <div class="home-title">
+      <h1>Creating a Community of Heroes – Donate Blood Today.</h1>
+      <h4>One Donation Can Save Multiple Lives. Be a Hero!</h4>
+    </div>
+  </div>
+</section>
+<!-- Header End -->
 
-                  <button class="btn count" >Donors registered</button>
-                  <button class="btn count" >Blood units collected</button>
-                </div>
-        </div>
-    </section>
-    <!-- Header End -->
+<!-- Sub Header Start -->
+<section id="sub-header">
+  <div class="sub-header__container">
+    <button
+      class="btn list"
+      id="get-health-center-list"
+      data-type="health_center"
+    >
+      Get Health Centers List
+    </button>
+    <button class="btn list" id="get-donor-list" data-type="donor">
+      Get Donor List
+    </button>
+    <button class="btn list" id="get-donation-camp-list">Donation Camp</button>
+  </div>
+  <div id="get-details" class="mt-4"></div>
+</section>
+<!-- Sub Header End -->
 
-    <!-- Sub Header Start -->
-    <section id="sub-header">
-        <div class="sub-header__container">
-          <button class="btn list" id="get-health-center-list" data-type="health_center">Get Health Centers List</button>
-          <button class="btn list" id="get-donor-list" data-type="donor">Get Donor List</button>
-          <button class="btn list" id="get-donation-camp-list" >Donation Camp</button>
-        </div>
-        <div id="get-details" class="mt-4"></div>
+<!--info start-->
+<section id="info">
+  <div class="container">
+    <div class="container1">
+      <h2 style="text-align: center; color: red">
+        DONOR BLOOD GROUP STATISTICS
+      </h2>
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="container2">
+      <h2 style="text-align: center; color: red">REGISTERED STATISTICS</h2>
+      <canvas id="myChart2"></canvas>
+    </div>
+  </div>
+</section>
 
-    </section>
-    <!-- Sub Header End -->
+<!--info end-->
 
-    <!-- Articles Start -->
-    <section id="articles">
-        <div class="container">
-            <h2 style="display: inline-block;">Articles</h2>
-            <div class="swiper-container">
-            <div class="button-area" style="display: inline-block; margin-left: 850px;">
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </button>
-            </div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-img-top" style="position: relative;">
-                                <img src="imgs/p3.jpg" alt="Card image">
-                                <button class="like"><i class="fas fa-heart icon-large"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Blood Types</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-                                    laborum
-                                    dolor minus quibusdam sequi asperiores? Fugiat aut consectetur laudantium ea sed
-                                    nihil
-                                    dolore, in mollitia blanditiis, rem omnis recusandae maiores?</p>
-                                <div class="btn-cont">
-                                    <button class="card-btn" onclick= "window.location.href = 'article.html';">Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-img-top" style="position: relative;">
-                                <img src="imgs/p4.jpg" alt="Card image">
-                                <button class="like"><i class="fas fa-heart icon-large"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Donations Benefits</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-                                    laborum
-                                    dolor minus quibusdam sequi asperiores? Fugiat aut consectetur laudantium ea sed
-                                    nihil
-                                    dolore, in mollitia blanditiis, rem omnis recusandae maiores?</p>
-                                <div class="btn-cont">
-                                    <button class="card-btn" onclick= "window.location.href = 'article.html';">Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card ">
-                            <div class="card-img-top" style="position: relative;">
-                                <img src="imgs/p1.jpg" alt="Card image">
-                                <button class="like"><i class="fas fa-heart icon-large"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Disease Protection</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-                                    laborum
-                                    dolor minus quibusdam sequi asperiores? Fugiat aut consectetur laudantium ea sed
-                                    nihil
-                                    dolore, in mollitia blanditiis, rem omnis recusandae maiores?</p>
-                                <div class="btn-cont">
-                                    <button class="card-btn" onclick= "window.location.href = 'article.html';">Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-img-top" style="position: relative;">
-                                <img src="imgs/p5.jpg" alt="Card image">
-                                <button class="like"><i class="fas fa-heart icon-large"></i></button>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">How To Donate?</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-                                    laborum
-                                    dolor minus quibusdam sequi asperiores? Fugiat aut consectetur laudantium ea sed
-                                    nihil
-                                    dolore, in mollitia blanditiis, rem omnis recusandae maiores?</p>
-                                <div class="btn-cont">
-                                    <button class="card-btn" onclick= "window.location.href = 'article.html';">Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Articles End -->
+<!-- Articles Start -->
+<section id="articles">
+  <div class="container">
+    <div class="article-content">
+      <div class="left-side">
+        <img
+          src="../../../public/assets/img/donate.png"
+          alt="Blood Donation Information"
+        />
+      </div>
+      <div class="right-side">
+        <h2>LEARN ABOUT DONATION</h2>
+        <h3>Compatible Blood Donors</h3>
+        <table class="blood-type-table">
+          <thead>
+            <tr>
+              <th>Blood Type</th>
+              <th>Donate Blood To</th>
+              <th>Receive Blood From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A+</td>
+              <td>A+ AB+</td>
+              <td>A+ A- O+ O-</td>
+            </tr>
+            <tr>
+              <td>O+</td>
+              <td>O+ A+ B+ AB+</td>
+              <td>O+ O-</td>
+            </tr>
+            <tr>
+              <td>B+</td>
+              <td>B+ AB+</td>
+              <td>B+ B- O+ O-</td>
+            </tr>
+            <tr>
+              <td>AB+</td>
+              <td>AB+</td>
+              <td>Everyone</td>
+            </tr>
+            <tr>
+              <td>A-</td>
+              <td>A+ A- AB+ AB-</td>
+              <td>A- O-</td>
+            </tr>
+            <tr>
+              <td>O-</td>
+              <td>Everyone</td>
+              <td>O-</td>
+            </tr>
+            <tr>
+              <td>B-</td>
+              <td>B+ B- AB+ AB-</td>
+              <td>B- O-</td>
+            </tr>
+            <tr>
+              <td>AB-</td>
+              <td>AB+ AB-</td>
+              <td>AB- B- O-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Articles End -->
 
-    <!-- Footer Start -->
-    <section id="footer">
-        
-    </section>
-    <!-- Footer End -->
-
-
+<!-- Footer Start -->
+<section id="footer"></section>
+<!-- Footer End -->

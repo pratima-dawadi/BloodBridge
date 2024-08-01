@@ -1,6 +1,7 @@
 import { required } from "joi";
 import { IDonate, IRequest } from "../interfaces/donateRequest.interfaces";
 import { BaseModel } from "./base.model";
+import { getUserQuery } from "../interfaces/user.interfaces";
 
 export class DonateRequestModel extends BaseModel {
   static async donateBlood(
@@ -73,6 +74,20 @@ export class DonateRequestModel extends BaseModel {
         .from("donation")
         .where("donorId", userId);
       const data = await query;
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async getDonorEmail(query: getUserQuery) {
+    try {
+      console.log(query);
+      const data = await this.queryBuilder()
+        .select("users.email")
+        .from("users")
+        .innerJoin("donorInformation", "users.id", "donorInformation.userId")
+        .where("bloodGroup", query.bloodGroup);
       return data;
     } catch (error) {
       return error;

@@ -59,11 +59,15 @@ export async function handleButtons() {
       const id = target.getAttribute("data-id");
       const supplierInfo = target.getAttribute("data-request");
       const userType = target.getAttribute("user-type");
-      if (id) {
+      const token = localStorage.getItem("token");
+      if (id && token) {
         const supplierData = JSON.parse(supplierInfo!);
         console.log("supplier Data:", supplierData);
         await navigateTo("/requestblood");
         requestBlood(id, supplierData!, userType!);
+      } else {
+        alert("Please login to request blood");
+        navigateTo("/login");
       }
     });
   });
@@ -75,10 +79,14 @@ export async function handleButtons() {
       const id = target.getAttribute("data-id");
       const receiverInfo = target.getAttribute("data-request");
       const userType = target.getAttribute("user-type");
-      if (id) {
+      const token = localStorage.getItem("token");
+      if (id && token) {
         const receiverData = JSON.parse(receiverInfo!);
         await navigateTo("/donateblood");
         donateBlood(id, receiverData!, userType!);
+      } else {
+        alert("Please login to donate blood");
+        navigateTo("/login");
       }
     });
   });

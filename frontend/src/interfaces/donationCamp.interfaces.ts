@@ -1,4 +1,5 @@
 export interface IDonationCamp {
+  healthCenterName: string;
   healthCenterId: string;
   name: string;
   district: string;

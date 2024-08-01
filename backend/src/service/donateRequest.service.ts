@@ -1,4 +1,5 @@
 import { IDonate, IRequest } from "../interfaces/donateRequest.interfaces";
+import { getUserQuery } from "../interfaces/user.interfaces";
 import * as DonateRequestModel from "../model/donateRequest.model";
 
 export function donateBlood(id: string, userId: string, body: IDonate) {
@@ -15,4 +16,8 @@ export function requestHistory(userId: string) {
 
 export function donateHistory(userId: string) {
   return DonateRequestModel.DonateRequestModel.donateHistory(userId);
+}
+
+export function getDonorEmail(query: getUserQuery) {
+  return DonateRequestModel.DonateRequestModel.getDonorEmail(query);
 }

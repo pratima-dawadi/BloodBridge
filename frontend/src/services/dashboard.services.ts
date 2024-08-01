@@ -96,3 +96,16 @@ export async function updateDonorInformation(donorInfo: any) {
     return error;
   }
 }
+
+export async function addDonationCampService(donationCamp: any) {
+  try {
+    const response = await axios.post(`${baseUrl}/donationcamp`, donationCamp, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}

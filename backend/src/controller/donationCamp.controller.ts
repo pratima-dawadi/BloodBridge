@@ -3,10 +3,14 @@ import { Request } from "../interfaces/auth.interface";
 import * as DonationCampService from "../service/donationCamp.service";
 
 export async function createDonationCamp(req: Request, res: Response) {
-  const { body } = req;
-  const userId = req.user!.id;
-  const data = await DonationCampService.createDonationCamp(userId, body);
-  res.json(`Created Donation Camp: ${JSON.stringify(data)}`);
+  try {
+    const { body } = req;
+    const userId = req.user!.id;
+    const data = await DonationCampService.createDonationCamp(userId, body);
+    res.json(`Created Donation Camp`);
+  } catch (err) {
+    res.json(`Error creating Donation Camp`);
+  }
 }
 
 export async function getDonationCamp(req: Request, res: Response) {

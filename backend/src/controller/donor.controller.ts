@@ -31,3 +31,18 @@ export async function updateDonorInformation(req: Request, res: Response) {
   const data = await DonorService.updateDonorInformation(userId, body);
   res.json(data);
 }
+
+export async function getDonorCount(req: Request, res: Response) {
+  const data = await DonorService.getDonorCount();
+  res.json(data);
+}
+
+export async function getHealthCenterCount(req: Request, res: Response) {
+  const data = await DonorService.getHealthCenterCount();
+  res.json(data);
+}
+
+export async function getDonorGroup(req: Request, res: Response) {
+  const data = await DonorService.getDonorGroup();
+  res.json(data);
+}

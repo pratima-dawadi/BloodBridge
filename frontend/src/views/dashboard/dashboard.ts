@@ -7,6 +7,7 @@ import { donationHistory } from "./userDashboard/donationHistory";
 import { requestHistory } from "./userDashboard/requestHistory";
 import { updateProfile } from "./userDashboard/updateProfile";
 import { addInventory } from "./healthCenterDashboard/addInventory";
+import { addDonationCamp } from "./healthCenterDashboard/addDonationCamp";
 import {
   getDonationHistory,
   getRequestHistory,
@@ -52,6 +53,10 @@ export async function handleAddInventory() {
 export async function handleInventory() {
   const getInventory = await getInventoryDetails();
   inventory(getInventory);
+}
+
+export async function handleaddDonationCamp() {
+  addDonationCamp();
 }
 
 export async function handleDashboardLoad() {

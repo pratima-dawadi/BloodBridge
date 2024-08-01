@@ -22,3 +22,15 @@ export async function updateDonorInformation(
 ) {
   return await DonorModel.updateDonorInformation(userId, body);
 }
+
+export async function getDonorCount() {
+  return await DonorModel.getDonorCount();
+}
+
+export async function getHealthCenterCount() {
+  return await DonorModel.getHealthCenterCount();
+}
+
+export async function getDonorGroup() {
+  return await DonorModel.getDonorGroup();
+}

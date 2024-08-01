@@ -3,8 +3,8 @@
     <img src="../../../public/assets/img/home2.jpg" alt="signupUser" />
   </div>
   <div class="form-overlay">
-    <h2>Health Center Form</h2>
-    <form id="signUpHealthCenter-form">
+    <h2 class="mb-1 mt-2">Health Center Form</h2>
+    <form id="signUpHealthCenter-form" enctype="multipart/form-data">
       <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -62,8 +62,9 @@
       <div class="form-group">
         <label for="images">Images</label>
         <input
-          type="text"
-          class="form-control"
+        type="file"
+        accept="image/*"
+        class="form-control"
           id="imageInput"
           placeholder="Enter image URLs"
         />
@@ -75,7 +76,7 @@
           <option value="Hospital">Hospital</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
   </div>
 </div>

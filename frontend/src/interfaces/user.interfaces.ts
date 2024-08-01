@@ -12,7 +12,7 @@ export interface IUser {
 
 export interface IHealthCenter extends IUser {
   userId?: string;
-  image: string;
+  image: File;
   type: string;
 }
 

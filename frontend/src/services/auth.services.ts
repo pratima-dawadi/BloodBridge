@@ -25,7 +25,7 @@ export async function signUpUser(user: IUser) {
   }
 }
 
-export async function signUpHealthCenter(healthcenter: IHealthCenter) {
+export async function signUpHealthCenter(healthcenter: FormData) {
   try {
     const response = await axios.post(
       `${baseUrl}/users/signup/healthcenter`,
@@ -65,10 +65,18 @@ export async function getDetails() {
 
 export async function getDetailsById(id: number) {
   try {
-    console.log(`id sent: ${id}`);
-    console.log(`url sent: ${baseUrl}/users/${id}`);
     const response = await axios.get(`${baseUrl}/users/${id}`);
     console.log("Response from getDetailsById:", response.data);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getRespectiveDetailsById(id: number) {
+  try {
+    const response = await axios.get(`${baseUrl}/users/details/${id}`);
+    console.log("Response from getRespectiveDetailsById:", response.data);
     return response.data;
   } catch (error) {
     return error;

@@ -27,7 +27,15 @@ export class DonationCampModel extends BaseModel {
   }
 
   static async getDonationCamp() {
-    const query = this.queryBuilder().select("*").from("donation_camp");
+    const query = this.queryBuilder()
+      .select("users.name as healthCenterName", "donationCamp.*")
+      .from("users")
+      .innerJoin("health_center", "users.id", "health_center.userId")
+      .innerJoin(
+        "donation_camp",
+        "healthCenter.id",
+        "donation_camp.healthCenterId"
+      );
     const data = await query;
     return data;
   }

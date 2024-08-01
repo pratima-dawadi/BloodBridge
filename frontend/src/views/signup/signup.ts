@@ -62,26 +62,27 @@ export const handleSignUpHealthCenter = async (event: Event) => {
   ).value;
 
   const image = (document.getElementById("imageInput") as HTMLInputElement)
-    .value;
+    .files![0];
 
   const type = (document.getElementById("typeInput") as HTMLInputElement).value;
 
   const userRole = "health_center";
   const donorFlag = false;
-  const healthcenter = {
-    name,
-    email,
-    password,
-    phone,
-    district,
-    location,
-    userRole,
-    donorFlag,
-    image,
-    type,
-  };
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("phone", phone);
+  formData.append("district", district);
+  formData.append("location", location);
+  formData.append("userRole", userRole);
+  formData.append("donorFlag", donorFlag.toString());
+  formData.append("image", image);
+  formData.append("type", type);
+
   try {
-    const response = await signUpHealthCenter(healthcenter);
+    const response = await signUpHealthCenter(formData);
     alert(JSON.stringify(response));
     console.log("Response from signup.ts:", response);
     navigateTo("/login");

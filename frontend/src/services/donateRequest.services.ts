@@ -13,8 +13,7 @@ export async function donateBlood(recipientId: string, donorInfo: IDonate) {
         },
       }
     );
-    console.log(`Response in donateBlood: ${response.data}`);
-    console.log(`response.dat :${JSON.stringify(response.data)}`);
+
     return response.data;
   } catch (error) {
     return error;
@@ -32,7 +31,6 @@ export async function requestBlood(supplierId: string, requestInfo: IRequest) {
         },
       }
     );
-    console.log(`response.data :${JSON.stringify(response.data)}`);
     return response.data;
   } catch (error) {
     return error;
@@ -60,6 +58,32 @@ export async function getDonationHistory() {
       },
     });
     return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getUrgencyDonorMail(bloodGroup: string) {
+  try {
+    const encodedBloodGroup = encodeURIComponent(bloodGroup);
+    const response = await axios.get(
+      `${baseUrl}/donoremail/?bloodGroup=${encodedBloodGroup}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function sendUrgencyMail(mail: any) {
+  try {
+    const response = await axios.post(`${baseUrl}/send-email`, mail);
+    return JSON.stringify(response.data);
   } catch (error) {
     return error;
   }

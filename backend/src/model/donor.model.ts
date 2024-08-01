@@ -80,4 +80,29 @@ export class DonorModel extends BaseModel {
     }
     return `Unable to update donor information for user`;
   }
+
+  static async getDonorCount() {
+    const query = this.queryBuilder()
+      .count("*")
+      .from("donor_information")
+      .first();
+    const data = await query;
+    return data;
+  }
+
+  static async getHealthCenterCount() {
+    const query = this.queryBuilder().count("*").from("health_center").first();
+    const data = await query;
+    return data;
+  }
+
+  static async getDonorGroup() {
+    const query = this.queryBuilder()
+      .select("blood_group")
+      .count("blood_group")
+      .from("donor_information")
+      .groupBy("blood_group");
+    const data = await query;
+    return data;
+  }
 }

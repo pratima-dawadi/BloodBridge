@@ -7,9 +7,10 @@ import {
   handleUpdateProfile,
   handleAddInventory,
   handleSetDonor,
+  handleaddDonationCamp,
 } from "../../views/dashboard/dashboard";
 
-export const userdashboard = () => {
+export const userdashboard = async () => {
   document.getElementById("profile-button")?.addEventListener("click", () => {
     handleUpdateProfile();
   });
@@ -45,4 +46,9 @@ export const healthCenterDashboard = () => {
   document.getElementById("hc-inventory")?.addEventListener("click", () => {
     handleInventory();
   });
+  document
+    .getElementById("hc-add-donation-camp")
+    ?.addEventListener("click", () => {
+      handleaddDonationCamp();
+    });
 };

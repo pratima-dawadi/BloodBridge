@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { Request } from "../interfaces/auth.interface";
+import { FileRequest, Request } from "../interfaces/auth.interface";
 import * as UserService from "../service/user.service";
 
 export async function getUsers(req: Request, res: Response) {
@@ -34,6 +34,12 @@ export async function getUserById(req: Request, res: Response) {
   res.json(data);
 }
 
+export async function getUsersDetailsById(req: Request, res: Response) {
+  const id = parseInt(req.params.id);
+  const data = await UserService.getUsersDetailsById(id);
+  res.json(data);
+}
+
 export async function getDetails(req: Request, res: Response) {
   const userId = req.user!.id;
   const data = await UserService.getDetails(userId);
@@ -55,7 +61,12 @@ export async function createUser(req: Request, res: Response) {
 
 export async function createHealthCenter(req: Request, res: Response) {
   const { body } = req;
-  const data = await UserService.createHealthCenter(body);
+  if (!req.file) {
+    return;
+  }
+  const hcLogo = `uploads/${req.file.filename}`;
+  const hcInfo = { ...body, images: hcLogo };
+  const data = await UserService.createHealthCenter(hcInfo);
   res.json(data);
 }
 
