@@ -18,7 +18,7 @@ BloodBridge is a comprehensive blood management system designed to streamline th
 To get started, first clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/bloodbridge.git
+git clone https://github.com/pratima-dawadi/BloodBridge
 cd bloodbridge
 ```
 ### Backend Setup
