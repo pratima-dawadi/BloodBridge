@@ -34,7 +34,6 @@ export async function updateDonationCamp(req: Request, res: Response) {
 
 export async function deleteDonationCamp(req: Request, res: Response) {
   const id = req.params.id;
-  const userId = req.user!.id;
-  const data = await DonationCampService.deleteDonationCamp(id, userId);
+  const data = await DonationCampService.deleteDonationCamp(id);
   res.json(data);
 }

@@ -71,6 +71,13 @@ const routes = [
         "./src/views/dashboard/healthCenterDashboard/healthCenterDashboard.html"
       ).then((response) => response.text()),
   },
+  {
+    path: "/admindashboard",
+    action: async () =>
+      fetch("./src/views/dashboard/adminDashboard/adminDashboard.html").then(
+        (response) => response.text()
+      ),
+  },
 ];
 
 const router = new UniversalRouter(routes);

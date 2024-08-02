@@ -12,6 +12,7 @@ import {
   getId,
   getHealthCenterID,
   getUsersDetailsById,
+  updateUserById,
 } from "../controller/user.controller";
 import { authenticate } from "../middleware/auth.middleware";
 import { validateReqBody } from "../middleware/validator.middleware";
@@ -49,5 +50,11 @@ router.post("/signup", validateReqBody(createUserBodySchema), createUser);
 router.post("/signup/healthcenter", upload.single("image"), createHealthCenter);
 
 router.delete("/:id", authenticate, deleteUser);
+router.put(
+  "/:id",
+  authenticate,
+  validateReqBody(updateUserBodySchema),
+  updateUserById
+);
 
 export default router;

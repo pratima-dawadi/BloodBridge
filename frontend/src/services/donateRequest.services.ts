@@ -88,3 +88,55 @@ export async function sendUrgencyMail(mail: any) {
     return error;
   }
 }
+
+export async function getRequestHistoryAll() {
+  try {
+    const response = await axios.get(`${baseUrl}/requestall`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getDonationHistoryAll() {
+  try {
+    const response = await axios.get(`${baseUrl}/donateall`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function deleteRequestById(requestId: number) {
+  try {
+    const response = await axios.delete(`${baseUrl}/request/${requestId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function deleteDonationById(donationId: number) {
+  try {
+    const response = await axios.delete(`${baseUrl}/donate/${donationId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}

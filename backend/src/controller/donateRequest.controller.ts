@@ -75,3 +75,57 @@ export async function getDonorEmail(
     next(error);
   }
 }
+
+export async function allRequestHistory(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const data = await donateRequestService.allRequestHistory();
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function allDonateHistory(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const data = await donateRequestService.allDonateHistory();
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function deleteRequest(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const id = req.params.id;
+    const data = await donateRequestService.deleteRequest(id);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function deleteDonate(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const id = req.params.id;
+    const data = await donateRequestService.deleteDonate(id);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+}

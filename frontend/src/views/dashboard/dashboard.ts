@@ -1,4 +1,8 @@
-import { getInventoryDetails } from "../../services/dashboard.services";
+import {
+  getAllHealthCenters,
+  getAllUsers,
+  getInventoryDetails,
+} from "../../services/dashboard.services";
 import { hcProfile } from "./healthCenterDashboard/hcProfile";
 import { hcRequestHistory } from "./healthCenterDashboard/hcRequestHistory";
 import { inventory } from "./healthCenterDashboard/inventory";
@@ -10,10 +14,18 @@ import { addInventory } from "./healthCenterDashboard/addInventory";
 import { addDonationCamp } from "./healthCenterDashboard/addDonationCamp";
 import {
   getDonationHistory,
+  getDonationHistoryAll,
   getRequestHistory,
+  getRequestHistoryAll,
 } from "../../services/donateRequest.services";
 import { getDetails } from "../../services/auth.services";
 import { dashboardLoad } from "./userDashboard/dashboardLoad";
+import { userCRUD } from "./adminDashboard/userCRUD";
+import { hcCRUD } from "./adminDashboard/hcCRUD";
+import { donationCampCRUD } from "./adminDashboard/donationCampCRUD";
+import { donationCRUD } from "./adminDashboard/donationCRUD";
+import { requestCRUD } from "./adminDashboard/requestCRUD";
+import { getDonationCamps } from "../../services/home.services";
 
 export async function handleUpdateProfile() {
   const getUserProfile = await getDetails();
@@ -60,4 +72,32 @@ export async function handleaddDonationCamp() {
 export async function handleDashboardLoad() {
   const donorFlag = await getDetails();
   dashboardLoad(donorFlag.donorFlag);
+}
+
+export async function handleUserCRUD() {
+  const users = await getAllUsers();
+  userCRUD(users);
+}
+
+export async function handleHcCRUD() {
+  const healthCenters = await getAllHealthCenters();
+  hcCRUD(healthCenters);
+}
+
+export async function handleDonationCampCRUD() {
+  const donationCamps = await getDonationCamps();
+  console.log(donationCamps);
+  donationCampCRUD(donationCamps);
+}
+
+export async function handleDonationCRUD() {
+  const donations = await getDonationHistoryAll();
+  console.log(donations);
+  donationCRUD(donations);
+}
+
+export async function handleRequestCRUD() {
+  const requests = await getRequestHistoryAll();
+  console.log(requests);
+  requestCRUD(requests);
 }

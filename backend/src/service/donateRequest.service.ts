@@ -21,3 +21,19 @@ export function donateHistory(userId: string) {
 export function getDonorEmail(query: getUserQuery) {
   return DonateRequestModel.DonateRequestModel.getDonorEmail(query);
 }
+
+export function allRequestHistory() {
+  return DonateRequestModel.DonateRequestModel.allRequestHistory();
+}
+
+export function allDonateHistory() {
+  return DonateRequestModel.DonateRequestModel.allDonateHistory();
+}
+
+export function deleteRequest(id: string) {
+  return DonateRequestModel.DonateRequestModel.deleteRequest(id);
+}
+
+export function deleteDonate(id: string) {
+  return DonateRequestModel.DonateRequestModel.deleteDonate(id);
+}

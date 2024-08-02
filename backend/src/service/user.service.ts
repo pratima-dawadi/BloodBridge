@@ -49,3 +49,7 @@ export async function createHealthCenter(user: IHealthCenter) {
 export async function deleteUser(id: number) {
   return UserModel.UserModel.deleteUser(id);
 }
+
+export async function updateUserById(id: number, body: IUser) {
+  return UserModel.UserModel.updateUserById(id, body);
+}

@@ -35,7 +35,7 @@ export const homeEventHandlers = () => {
     .getElementById("filter-form")
     ?.addEventListener("submit", async (event) => {
       const target = event.currentTarget as HTMLFormElement;
-      const getType = target.getAttribute("data-id");
+      target.getAttribute("data-id");
       handleSearchButton(event);
     });
 };
