@@ -39,3 +39,22 @@
   height: 100%;
   background: linear-gradient(360deg, #fbcdcd, #f6ecdd);
 }
+
+#admin-details {
+  max-width: 100%;
+  overflow-y: scroll;
+  padding-right: 25%;
+}
+
+#admin-details::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+#admin-details::-webkit-scrollbar-thumb {
+  background-color: #f3d1d1;
+  border-radius: 10px;
+}
+
+#admin-details .table {
+  width: 100%;
+}

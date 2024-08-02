@@ -25,6 +25,6 @@ export function updateDonationCamp(
   );
 }
 
-export function deleteDonationCamp(id: string, userId: string) {
-  return DonationCampModel.DonationCampModel.deleteDonationCamp(id, userId);
+export function deleteDonationCamp(id: string) {
+  return DonationCampModel.DonationCampModel.deleteDonationCamp(id);
 }

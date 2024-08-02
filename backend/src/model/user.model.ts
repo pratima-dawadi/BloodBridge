@@ -279,4 +279,25 @@ export class UserModel extends BaseModel {
     const data = await query;
     return data;
   }
+
+  static async updateUserById(id: number, body: IUser) {
+    const updateData = {
+      name: body.name,
+      email: body.email,
+      password: body.password,
+      phone: body.phone,
+      district: body.district,
+      location: body.location,
+    };
+    try {
+      const query = this.queryBuilder()
+        .update(updateData)
+        .from("users")
+        .where("id", id);
+      const data = await query;
+      return `User updated`;
+    } catch (error) {
+      return error;
+    }
+  }
 }

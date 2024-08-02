@@ -26,11 +26,6 @@ router.put(
   updateDonationCamp
 );
 
-router.delete(
-  "/:id",
-  authenticate,
-  authorizeRole("health_center"),
-  deleteDonationCamp
-);
+router.delete("/:id", authenticate, deleteDonationCamp);
 
 export default router;

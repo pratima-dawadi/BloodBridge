@@ -75,3 +75,10 @@ export async function deleteUser(req: Request, res: Response) {
   const data = await UserService.deleteUser(id);
   res.send(data);
 }
+
+export async function updateUserById(req: Request, res: Response) {
+  const id = parseInt(req.params.id);
+  const { body } = req;
+  const data = await UserService.updateUserById(id, body);
+  res.send(data);
+}

@@ -8,7 +8,7 @@ import { updateUser } from "../../../services/dashboard.services";
 export function hcProfile(UserDetails: any) {
   const userDashboard = document.getElementById("healthcenter-details");
   userDashboard!.innerHTML = `
-    <div class="row">
+    <div class="row container mt-5">
       <div class="col">
         <div class="form-group">
           <label for="name">Name:</label>

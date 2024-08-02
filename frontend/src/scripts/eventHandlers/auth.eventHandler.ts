@@ -6,7 +6,11 @@ import {
   handleSignUpUser,
 } from "../../views/signup/signup";
 import render from "../render";
-import { healthCenterDashboard, userdashboard } from "./dashboard.eventHandler";
+import {
+  adminDashboard,
+  healthCenterDashboard,
+  userdashboard,
+} from "./dashboard.eventHandler";
 import { homeEventHandlers } from "./home.eventHandlers";
 
 export const addEventListeners = async () => {
@@ -47,9 +51,14 @@ export const addEventListeners = async () => {
 
   homeEventHandlers();
   handleDashboardLoad();
-  handleHomeDynamic();
+  // handleHomeDynamic();
   userdashboard();
   healthCenterDashboard();
+  adminDashboard();
+
+  if (window.location.pathname === "/") {
+    handleHomeDynamic();
+  }
 };
 
 export const navigateTo = async (path: string) => {

@@ -8,7 +8,7 @@ import {
 export function updateProfile(UserDetails: any) {
   const getUserDashboard = document.getElementById("user-dashboard");
   getUserDashboard!.innerHTML = `
-    <div class="row">
+    <div class="row container mt-5">
       <div class="col">
         <div class="form-group">
           <label for="name">Name:</label>

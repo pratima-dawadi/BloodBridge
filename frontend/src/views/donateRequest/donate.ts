@@ -83,7 +83,7 @@ export async function donateBlood(
           lastDonated: donationDate,
           donatedCount: donorDetails.donatedCount + 1,
         };
-        const updateDonor = await updateDonorInformation(donorInfo);
+        await updateDonorInformation(donorInfo);
       }
 
       alert(JSON.stringify(response));

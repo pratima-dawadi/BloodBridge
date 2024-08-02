@@ -118,3 +118,60 @@ export async function addDonationCampService(donationCamp: any) {
     return error;
   }
 }
+
+export async function getAllUsers() {
+  try {
+    const response = await axios.get(`${baseUrl}/users`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getAllHealthCenters() {
+  try {
+    const response = await axios.get(`${baseUrl}/users/healthcenter`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function deleteUserById(id: number) {
+  try {
+    const response = await axios.delete(`${baseUrl}/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function updateUserById(id: number, user: any) {
+  try {
+    const response = await axios.put(`${baseUrl}/users/${id}`, user, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function deleteDonationCamp(id: number) {
+  try {
+    const response = await axios.delete(`${baseUrl}/donationcamp/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}

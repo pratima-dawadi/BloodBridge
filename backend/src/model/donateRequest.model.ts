@@ -94,4 +94,70 @@ export class DonateRequestModel extends BaseModel {
       return error;
     }
   }
+
+  static async allRequestHistory() {
+    try {
+      const query = this.queryBuilder()
+        .select(
+          "users1.name as requesterName",
+          "users2.name as supplierName",
+          "request.*"
+        )
+        .from("request")
+        .innerJoin("users as users1", "users1.id", "request.requesterId")
+        .innerJoin("users as users2", "users2.id", "request.supplierId");
+      const data = await query;
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async allDonateHistory() {
+    try {
+      const query = this.queryBuilder()
+        .select(
+          "donor.name as donorName",
+          "recipient.name as recipientName",
+          "donation.*"
+        )
+        .from("donation")
+        .innerJoin("users as donor", "donor.id", "donation.donorId")
+        .innerJoin(
+          "users as recipient",
+          "recipient.id",
+          "donation.recipientId"
+        );
+      const data = await query;
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async deleteRequest(id: string) {
+    try {
+      const query = this.queryBuilder()
+        .delete()
+        .from("request")
+        .where("id", id);
+      const data = await query;
+      return `Request history deleted successfully`;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async deleteDonate(id: string) {
+    try {
+      const query = this.queryBuilder()
+        .delete()
+        .from("donation")
+        .where("id", id);
+      const data = await query;
+      return `Donation history deleted successfully`;
+    } catch (error) {
+      return error;
+    }
+  }
 }

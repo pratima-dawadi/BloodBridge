@@ -86,23 +86,16 @@ export class DonationCampModel extends BaseModel {
     return `Updated donation camp with id ${id}`;
   }
 
-  static async deleteDonationCamp(id: string, userId: string) {
-    const healthCenterId = this.queryBuilder()
-      .select("id")
-      .from("health_center")
-      .where("userId", userId)
-      .first();
-    const dataHealthCenterId = await healthCenterId;
-
-    const query = this.queryBuilder()
-      .delete()
-      .from("donation_camp")
-      .where({ id: id, healthCenterId: dataHealthCenterId.id });
-    const data = await query;
-
-    if (!data) {
-      return `Donation Camp with id ${id} not found or Permission denied`;
+  static async deleteDonationCamp(id: string) {
+    try {
+      const query = this.queryBuilder()
+        .delete()
+        .from("donation_camp")
+        .where({ id: id });
+      const data = await query;
+      return `Donation Camp deleted successfully`;
+    } catch (err) {
+      return `Error deleting Donation Camp`;
     }
-    return `Donation Camp with id ${id} deleted successfully`;
   }
 }
