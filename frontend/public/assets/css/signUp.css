@@ -1,0 +1,105 @@
+/***************************/
+/* Signup form */
+
+.signup-div,
+.login-div {
+  position: relative;
+  text-align: center;
+  height: 100vh;
+}
+
+.signup-img,
+.login-img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.signup-img img,
+.login-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+}
+
+.form-overlay {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  width: 40%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2%;
+  border-radius: 2%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-overlay h2 {
+  margin-bottom: 2%;
+}
+
+.form-overlay i {
+  color: red;
+}
+.form-overlay .tagline {
+  font-size: 1.8rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form-overlay label {
+  font-size: 1rem;
+  text-align: left;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 2%;
+  margin-top: 1%;
+}
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.form-overlay .btn-primary {
+  margin-top: 4%;
+  width: 40%;
+}
+
+.signup-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+  background-color: #e8dad9;
+}
+
+.signup-options a {
+  color: #ff1510;
+}
+
+@media (max-width: 768px) {
+  .form-overlay {
+    width: 80%;
+  }
+
+  .form-group input {
+    padding: 1.5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-overlay {
+    width: 90%;
+  }
+
+  .form-group input {
+    padding: 1%;
+  }
+}

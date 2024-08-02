@@ -16,7 +16,8 @@ export function seed(knex: Knex): Promise<void> {
         {
           name: "admin",
           email: "admin@gmail.com",
-          password: "Admin@1234",
+          password:
+            "$2b$10$/V9NmYcGfWAvVovasibzAe1ykqnX1vlHMXBjgrM2h2flCIUo68P.2",
           phone: "1234567890",
           district: "Kathmandu",
           location: "Raniban",
