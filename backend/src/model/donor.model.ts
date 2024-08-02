@@ -1,6 +1,9 @@
 import { IDonorInformation } from "../interfaces/user.interfaces";
 import { BaseModel } from "./base.model";
 
+/**
+ * The `DonorModel` class in TypeScript contains methods for setting donor flags, creating and updating donor information, and getting donor counts.
+ */
 export class DonorModel extends BaseModel {
   static async getDonorFlag(id: string) {
     const query = this.queryBuilder()

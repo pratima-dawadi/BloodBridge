@@ -1,5 +1,10 @@
 import { updateUser } from "../../../services/dashboard.services";
 
+/**
+ * The `hcProfile` function creates a form to display and update health center user details.
+ * @param {any} UserDetails - The `hcProfile` function is designed to populate a form with user details
+ * and allow the user to update their health center profile.
+ */
 export function hcProfile(UserDetails: any) {
   const userDashboard = document.getElementById("healthcenter-details");
   userDashboard!.innerHTML = `
@@ -90,7 +95,9 @@ export function hcProfile(UserDetails: any) {
   ) as HTMLInputElement;
   userLocationElement.value = userLocation;
 
-  const updateButton = document.getElementById("update-hc-button");
+  const updateButton = document.getElementById(
+    "update-hc-button"
+  ) as HTMLButtonElement;
 
   updateButton?.addEventListener("click", async () => {
     const dataToUpdate = {
@@ -104,5 +111,6 @@ export function hcProfile(UserDetails: any) {
     //updating the health center profile
     const response = await updateUser(dataToUpdate);
     alert(response);
+    updateButton.disabled = true;
   });
 }

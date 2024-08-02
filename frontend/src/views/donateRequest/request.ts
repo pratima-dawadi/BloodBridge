@@ -15,9 +15,6 @@ export async function requestBlood(
   const userPayload: any = jwtDecode(getToken!);
 
   const supplierRole = await getDetailsById(+supplierId);
-  console.log(
-    `requesting blood from ${userPayload.name} to ${supplierData.name}`
-  );
 
   const requesterName = document.getElementById(
     "requesterName"
@@ -48,8 +45,6 @@ export async function requestBlood(
         document.getElementById("requiredDate") as HTMLInputElement
       ).value;
 
-      console.log("donorFlag", supplierData.donorFlag);
-
       const requestBlood: IRequest = {
         requesterId: userPayload.id,
         supplierType: supplierType,
@@ -60,7 +55,6 @@ export async function requestBlood(
         requiredDate: new Date(requiredDate),
         requestDate: new Date(),
       };
-      console.log("requestBlood", requestBlood);
 
       const response = await donateRequestService.requestBlood(
         supplierId,

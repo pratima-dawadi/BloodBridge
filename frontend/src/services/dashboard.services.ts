@@ -1,6 +1,12 @@
 import axios from "axios";
 import { baseUrl } from "../utils/baseUrl";
 
+/**
+ * updates a user's information using an HTTP PUT request with authorization headers.
+ * @param {any} healthcenter - The `healthcenter` parameter in the `updateUser` function is an object
+ * containing the data of the user to be updated.
+ * @returns return the data from the response if the update was successful.
+ */
 export async function updateUser(healthcenter: any) {
   try {
     const response = await axios.put(`${baseUrl}/users/update`, healthcenter, {
@@ -14,6 +20,10 @@ export async function updateUser(healthcenter: any) {
   }
 }
 
+/**
+ * gets the inventory details of health center using an HTTP GET request with authorization headers.
+ * @returns return the data from the response if the get was successful.
+ */
 export async function getInventoryDetails() {
   try {
     const response = await axios.get(`${baseUrl}/inventory/particular`, {
@@ -27,6 +37,10 @@ export async function getInventoryDetails() {
   }
 }
 
+/**
+ * add the inventory details of health center
+ * @returns return the data from the response if the get was successful.
+ */
 export async function addInventoryService(inventory: any) {
   try {
     const response = await axios.post(`${baseUrl}/inventory`, inventory, {
@@ -42,14 +56,11 @@ export async function addInventoryService(inventory: any) {
 
 export async function setFlag() {
   try {
-    const authorizationToken = localStorage.getItem("token");
-    console.log(authorizationToken);
     const response = await axios.put(`${baseUrl}/donor`, "", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     return error;
@@ -63,7 +74,6 @@ export async function setDonorInformation(donor: any) {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     return error;
@@ -77,7 +87,6 @@ export async function getDonorInformation() {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    console.log(`donor information: ${JSON.stringify(response.data)}`);
     return response.data;
   } catch (error) {
     return error;

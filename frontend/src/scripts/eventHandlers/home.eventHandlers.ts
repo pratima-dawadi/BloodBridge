@@ -36,7 +36,6 @@ export const homeEventHandlers = () => {
     ?.addEventListener("submit", async (event) => {
       const target = event.currentTarget as HTMLFormElement;
       const getType = target.getAttribute("data-id");
-      console.log(getType);
       handleSearchButton(event);
     });
 };
@@ -62,7 +61,6 @@ export async function handleButtons() {
       const token = localStorage.getItem("token");
       if (id && token) {
         const supplierData = JSON.parse(supplierInfo!);
-        console.log("supplier Data:", supplierData);
         await navigateTo("/requestblood");
         requestBlood(id, supplierData!, userType!);
       } else {

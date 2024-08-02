@@ -35,7 +35,6 @@ export const handleSignUpUser = async (event: Event) => {
   try {
     const response = await signUpUser(user);
     alert(JSON.stringify(response));
-    console.log("Response from signup.ts:", response);
     navigateTo("/login");
   } catch (error) {
     console.error("Error during signup:", error);
@@ -84,7 +83,6 @@ export const handleSignUpHealthCenter = async (event: Event) => {
   try {
     const response = await signUpHealthCenter(formData);
     alert(JSON.stringify(response));
-    console.log("Response from signup.ts:", response);
     navigateTo("/login");
   } catch (error) {
     console.error("Error during signup:", error);

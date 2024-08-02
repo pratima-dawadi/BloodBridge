@@ -5,6 +5,7 @@
 .sidebar {
   width: 25%;
   padding: 2%;
+  background-color: #dedcdc;
 }
 
 .sidebar .btn {
@@ -26,7 +27,7 @@
 .sidebar #set-donor-button {
   border-radius: 10%;
   background-color: red;
-  max-width: 50%;
+  max-width: 60%;
   align-content: center;
   margin-left: 20%;
 }

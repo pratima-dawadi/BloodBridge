@@ -138,7 +138,9 @@ export function updateProfile(UserDetails: any) {
   ) as HTMLInputElement;
   userLocationElement.value = userLocation;
 
-  const updateButton = document.getElementById("update-button");
+  const updateButton = document.getElementById(
+    "update-button"
+  ) as HTMLButtonElement;
 
   updateButton?.addEventListener("click", async () => {
     const dataToUpdate = {
@@ -148,10 +150,9 @@ export function updateProfile(UserDetails: any) {
       district: userDistrictElement.value,
       location: userLocationElement.value,
     };
-    console.log(`Data to update: ${dataToUpdate}`);
-
     const response = await updateUser(dataToUpdate);
     alert(response);
+    updateButton.disabled = true;
   });
 
   donorInformationHandle();
@@ -175,8 +176,6 @@ export async function donorInformationHandle() {
     ageDiv.disabled = true;
   } else {
     const getDonorInfo = await getDonorInformation();
-    console.log(getDonorInfo);
-    console.log(getDonorInfo.age);
     genderDiv.disabled = false;
     bloodGroupDiv.disabled = false;
     weightDiv.disabled = false;
@@ -196,10 +195,7 @@ export async function donorInformationHandle() {
         weight: weightDiv.value,
         age: ageDiv.value,
       };
-      console.log(`donor to update: ${dataToUpdate}`);
-
-      const response = await updateDonorInformation(dataToUpdate);
-      alert(response);
+      await updateDonorInformation(dataToUpdate);
     });
   }
 }

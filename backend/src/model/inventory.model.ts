@@ -1,9 +1,11 @@
 import { IInventory } from "../interfaces/inventory.interface";
 import { BaseModel } from "./base.model";
 
+/**
+ * The `InventoryModel` class in TypeScript contains methods for creating, retrieving, updating, and deleting inventory.
+ */
 export class InventoryModel extends BaseModel {
   static async createInventory(userId: string, body: IInventory) {
-    console.log(`useriD: ${userId} and inventory: ${JSON.stringify(body)}`);
     const healthCenterId = this.queryBuilder()
       .select("id")
       .from("health_center")

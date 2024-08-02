@@ -1,5 +1,12 @@
 import { getDetails, getDetailsById } from "../../../services/auth.services";
 
+/**
+ * The function `hcRequestHistory` asynchronously fetches details and displays a table of request
+ * history for a health center.
+ * @param {any} requests - The `hcRequestHistory` function is an asynchronous function that takes an
+ * array of `requests` as a parameter. The function then fetches details, constructs a table with
+ * request history data, and displays it on the webpage.
+ */
 export async function hcRequestHistory(requests: any) {
   try {
     const requesterName = await getDetails();

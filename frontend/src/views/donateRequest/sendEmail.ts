@@ -7,7 +7,6 @@ export async function handleUrgency(
   emailRecipient: string
 ) {
   const getUserName = await getDetailsById(+id);
-  console.log(`Urgency request from ${getUserName.name}`);
   const mail = {
     to: emailRecipient,
     subject: "Urgency Blood Request",

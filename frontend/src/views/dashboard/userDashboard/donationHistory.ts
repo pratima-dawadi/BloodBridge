@@ -1,18 +1,16 @@
 import { getDetails, getDetailsById } from "../../../services/auth.services";
+
 export async function donationHistory(donations: any) {
   try {
     const requesterName = await getDetails();
-    console.log(requesterName.name);
     const getUserDashboard = document.getElementById("user-dashboard");
 
     if (getUserDashboard) {
       const rows = await Promise.all(
         donations.map(async (donation: any, index: any) => {
-          console.log(`reciepient Id: ${donation.recipientId}`);
           const intRecipientId = parseInt(donation.recipientId);
 
           const recipientName = await getDetailsById(intRecipientId);
-          console.log(`supplier name: ${recipientName.name}`);
           return `
             <tr>
               <th scope="row">${index + 1}</th>

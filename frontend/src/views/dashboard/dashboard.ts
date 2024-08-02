@@ -17,13 +17,11 @@ import { dashboardLoad } from "./userDashboard/dashboardLoad";
 
 export async function handleUpdateProfile() {
   const getUserProfile = await getDetails();
-  console.log(getUserProfile);
   updateProfile(getUserProfile);
 }
 
 export async function handleDonationHistory() {
   const donations = await getDonationHistory();
-  console.log(`donations: ${JSON.stringify(donations)}`);
   await donationHistory(donations);
 }
 

@@ -15,7 +15,6 @@ import { baseUrl } from "../../utils/baseUrl";
 export const handleHealthCenterList = async () => {
   try {
     const healthCenters = await getHealthCenters();
-    console.log("Health Centers:", healthCenters);
     getUserType("health_center");
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
@@ -120,7 +119,6 @@ export const handleDonorList = async () => {
 export const handleDonationCampList = async () => {
   try {
     const donationCamp = await getDonationCamps();
-    console.log("Donation Camps:", donationCamp);
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
       detailsDiv.innerHTML = donationCamp

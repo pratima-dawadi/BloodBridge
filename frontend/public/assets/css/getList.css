@@ -162,6 +162,16 @@
   border-radius: 8px;
 }
 
+.view-detail {
+  background-color: cadetblue;
+}
+.request-blood {
+  background-color: brown;
+}
+.donate-blood {
+  background-color: chocolate;
+}
+
 @media (max-width: 1200px) {
   .card {
     flex: 1 1 calc(50% - 1rem);

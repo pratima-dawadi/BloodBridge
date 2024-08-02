@@ -1,7 +1,12 @@
 import { Chart, PieController, ArcElement, Tooltip, Legend } from "chart.js";
 import { IInventory } from "../../../interfaces/inventory.interfaces";
+import { PIE_CHART_COLORS } from "../../../utils/colors";
 Chart.register(PieController, ArcElement, Tooltip, Legend);
 
+/**
+ * The `inventory` function generates a dynamic inventory table and pie chart based on the provided
+ * inventory data and displays it on the user dashboard element.
+ */
 export function inventory(inventories: IInventory[]) {
   const userDashboard = document.getElementById("healthcenter-details");
 
@@ -57,22 +62,8 @@ export function inventory(inventories: IInventory[]) {
           {
             label: "Inventory Quantity",
             data: data,
-            backgroundColor: [
-              "rgb(255, 99, 132)",
-              "rgb(54, 162, 235)",
-              "rgb(255, 206, 86)",
-              "rgb(75, 192, 192)",
-              "rgb(153, 102, 255)",
-              "rgb(255, 159, 64)",
-            ],
-            borderColor: [
-              "rgb(255, 99, 132)",
-              "rgb(54, 162, 235)",
-              "rgb(255, 206, 86)",
-              "rgb(75, 192, 192)",
-              "rgb(153, 102, 255)",
-              "rgb(255, 159, 64)",
-            ],
+            backgroundColor: PIE_CHART_COLORS,
+            borderColor: PIE_CHART_COLORS,
             borderWidth: 1,
           },
         ],

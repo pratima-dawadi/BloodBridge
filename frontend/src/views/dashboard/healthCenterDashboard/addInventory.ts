@@ -1,5 +1,10 @@
 import { addInventoryService } from "../../../services/dashboard.services";
 
+/**
+ * The `addInventory` function creates a form for adding inventory details like blood type,
+ * quantity, collection date, and expiration date, and upon submission, it sends the data to a service
+ * function for processing.
+ */
 export async function addInventory() {
   const userDashboard = document.getElementById("healthcenter-details");
   userDashboard!.innerHTML = `<div class="container mt-5">
@@ -35,7 +40,9 @@ export async function addInventory() {
   </form>
 </div>`;
 
-  const inventoryForm = document.getElementById("inventory-form");
+  const inventoryForm = document.getElementById(
+    "inventory-form"
+  ) as HTMLFormElement;
   inventoryForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const bloodType = (
@@ -56,9 +63,9 @@ export async function addInventory() {
       collectionDate,
       expirationDate,
     };
-    console.log("Inventory:", inventory);
 
     const response = await addInventoryService(inventory);
     alert(response);
+    inventoryForm.reset();
   });
 }

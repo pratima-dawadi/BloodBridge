@@ -1,5 +1,7 @@
 import Joi from "joi";
 
+/* The `createUserBodySchema` is Joi schema defined for validating the request
+body when creating a user. */
 export const createUserBodySchema = Joi.object({
   name: Joi.string().required().messages({
     "any.required": "Name is required",
@@ -52,6 +54,8 @@ export const createUserBodySchema = Joi.object({
   }),
 }).options({ stripUnknown: true });
 
+/* The `updateUserBodySchema` is Joi schema defined for validating the request body when
+updating a user.*/
 export const updateUserBodySchema = Joi.object({
   name: Joi.string(),
 
@@ -93,6 +97,8 @@ export const updateUserBodySchema = Joi.object({
   location: Joi.string(),
 }).options({ stripUnknown: true });
 
+/* The `getUserQuerySchema` is a Joi schema defined for validating query parameters typically used for
+fetching users.*/
 export const getUserQuerySchema = Joi.object({
   q: Joi.string().optional(),
   page: Joi.number().optional().messages({

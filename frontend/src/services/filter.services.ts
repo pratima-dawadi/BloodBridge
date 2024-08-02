@@ -1,4 +1,5 @@
 import axios from "axios";
+import { baseUrl } from "../utils/baseUrl";
 
 export async function filterUser(
   name: string,
@@ -6,10 +7,10 @@ export async function filterUser(
   location: string,
   bloodGroup: string
 ) {
+  const encodedBloodGroup = encodeURIComponent(bloodGroup);
   const response = await axios.get(
-    `http://localhost:3000/filter/user?name=${name}&district=${district}&location=${location}&bloodGroup=${bloodGroup}`
+    `${baseUrl}/filter/user?name=${name}&district=${district}&location=${location}&bloodGroup=${encodedBloodGroup}`
   );
-  console.log(`Response from filterUser:`, JSON.stringify(response.data));
   return response.data;
 }
 
@@ -19,12 +20,11 @@ export async function filterHealthCenter(
   location: string,
   bloodGroup: string
 ) {
+  const encodedBloodGroup = encodeURIComponent(bloodGroup);
+
   const response = await axios.get(
-    `http://localhost:3000/filter/healthcenter?name=${name}&district=${district}&location=${location}&bloodGroup=${bloodGroup}`
+    `${baseUrl}/filter/healthcenter?name=${name}&district=${district}&location=${location}&bloodGroup=${encodedBloodGroup}`
   );
-  console.log(
-    `Response from filterHealthCenter:`,
-    JSON.stringify(response.data)
-  );
+
   return response;
 }

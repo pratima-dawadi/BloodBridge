@@ -1,6 +1,9 @@
 import { IDonationCamp } from "../interfaces/donationCamp.interface";
 import { BaseModel } from "./base.model";
 
+/**
+ * The `DonationCampModel` class in TypeScript contains methods for creating, retrieving, updating, and deleting donation camps.
+ */
 export class DonationCampModel extends BaseModel {
   static async createDonationCamp(userId: string, body: IDonationCamp) {
     const healthCenterId = this.queryBuilder()

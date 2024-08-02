@@ -4,6 +4,7 @@ import {
 } from "../../interfaces/user.interfaces";
 import { handleButtons } from "../../scripts/eventHandlers/home.eventHandlers";
 import { filterHealthCenter, filterUser } from "../../services/filter.services";
+import { baseUrl } from "../../utils/baseUrl";
 
 let userType = "";
 
@@ -21,8 +22,6 @@ export async function handleSearchButton(event: Event) {
     document.getElementById("filterBloodType") as HTMLInputElement
   ).value;
 
-  console.log(filterName, filterDistrict, filterLocation, filterBloodGroup);
-
   if (userType == "user") {
     const getFilterUsers = await filterUser(
       filterName,
@@ -30,7 +29,6 @@ export async function handleSearchButton(event: Event) {
       filterLocation,
       filterBloodGroup
     );
-    console.log(`getFilterUsers on views: ${JSON.stringify(getFilterUsers)}`);
     handleGetUser(getFilterUsers);
   }
 
@@ -42,11 +40,6 @@ export async function handleSearchButton(event: Event) {
         filterLocation,
         filterBloodGroup
       );
-      console.log(
-        `getFilterHealthCenter on views: ${JSON.stringify(
-          getFilterHealthCenter
-        )}`
-      );
 
       const detailsDiv = document.getElementById("get-details");
       if (detailsDiv) {
@@ -55,14 +48,16 @@ export async function handleSearchButton(event: Event) {
             (center: IHealthCenter) => `
             <div class="card">
               <div class="card-body">
-                <img src="../../../public/assets/img/bloodbank.png" alt="Health Center Image" style="align-self:center">
-                <h5 class="card-title">ID: ${center.id}</h5>
+                <div class="health-center-image-container">
+                <img src="${baseUrl}/${
+              center.image
+            }" alt="Health Center Image" class="health-center-image">
+          </div>  
                 <p class="card-title"><strong></strong> ${center.name}</p>
                 <p class="card-text"><strong>Phone:</strong> ${center.phone}</p>
                 <p class="card-text"><strong>Location:</strong> ${
                   center.location
                 }, ${center.district}</p>
-                <p class="card-text"><strong>Type:</strong> ${center.type}</p>
                 <div class="button-group">
                 <button class="btn btn-secondary view-detail" data-id="${
                   center.userId
@@ -87,7 +82,6 @@ export async function handleSearchButton(event: Event) {
       }
     }
   } catch (error) {
-    console.error("Error fetching health center details:", error);
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
       detailsDiv.innerHTML =
@@ -120,7 +114,7 @@ export function handleGetUser(getFilterUsers: any[]) {
                         }</p>
                         <div class="button-group">
                         <button class="btn btn-secondary view-detail" data-id="${
-                          donor.id
+                          donor.userId
                         }">View Details</button>
                         <button class ="btn btn-secondary request-blood" data-id="${
                           donor.userId
@@ -136,7 +130,6 @@ export function handleGetUser(getFilterUsers: any[]) {
       handleButtons();
     }
   } catch (error) {
-    console.error("Error fetching health center details:", error);
     const detailsDiv = document.getElementById("get-details");
     if (detailsDiv) {
       detailsDiv.innerHTML =
@@ -146,6 +139,5 @@ export function handleGetUser(getFilterUsers: any[]) {
 }
 
 export function getUserType(type: string) {
-  console.log("User Type:", type);
   userType = type;
 }

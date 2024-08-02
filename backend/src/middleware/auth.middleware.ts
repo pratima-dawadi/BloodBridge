@@ -37,6 +37,11 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+/**
+ *function `authorize` checks the user's role and grants access based on specified permissions.
+ * @param {string} permissions - represents the role or permission
+ * @returns returns a JSON response with the message "Permission denied" if there is an error during the
+ */
 export function authorize(permissions: string) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const user = req.user!;
@@ -58,6 +63,11 @@ export function authorize(permissions: string) {
   };
 }
 
+/**
+ * function `authorizeRole` -checks if a user has the specified permissions
+ * @param {string} permissions - represents the role or permission level
+ * @returns returns a JSON response with the message "Permission denied" if an error occurs
+ */
 export function authorizeRole(permissions: string) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const user = req.user!;

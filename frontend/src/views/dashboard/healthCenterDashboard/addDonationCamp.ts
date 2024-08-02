@@ -1,5 +1,9 @@
 import { addDonationCampService } from "../../../services/dashboard.services";
 
+/**
+ * The function `addDonationCamp` dynamically creates a form to add a donation camp with fields for
+ * title, district, location, date, and timeframe, and submits the data to a service for processing.
+ */
 export async function addDonationCamp() {
   const userDashboard = document.getElementById("healthcenter-details");
   userDashboard!.innerHTML = `
@@ -30,7 +34,9 @@ export async function addDonationCamp() {
   </form>
 </div>
 `;
-  const donationCampForm = document.getElementById("donation-camp-form");
+  const donationCampForm = document.getElementById(
+    "donation-camp-form"
+  ) as HTMLFormElement;
   donationCampForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = (document.getElementById("title") as HTMLInputElement).value;
@@ -49,8 +55,8 @@ export async function addDonationCamp() {
       date,
       timeFrame,
     };
-    console.log("Donation Camp:", donationCamp);
     const response = await addDonationCampService(donationCamp);
     alert(response);
+    donationCampForm.reset();
   });
 }

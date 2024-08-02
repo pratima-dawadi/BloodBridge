@@ -13,9 +13,6 @@ export async function donateBlood(
 ) {
   const getToken = localStorage.getItem("token");
   const userPayload: any = jwtDecode(getToken!);
-  console.log(
-    `Donating blood from ${userPayload.name} to ${receiverInfo.name}`
-  );
 
   const donorName = document.getElementById("donorName") as HTMLInputElement;
   donorName.value = userPayload.name;
@@ -28,7 +25,6 @@ export async function donateBlood(
     const currentDate = new Date();
     const diffTime = Math.abs(currentDate.getTime() - lastDonated.getTime());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    console.log(diffDays);
     if (diffDays < 90) {
       alert("You have not completed 90 days since your last donation.");
       navigateTo("/");
@@ -88,7 +84,6 @@ export async function donateBlood(
           donatedCount: donorDetails.donatedCount + 1,
         };
         const updateDonor = await updateDonorInformation(donorInfo);
-        console.log("Donor Info:", updateDonor);
       }
 
       alert(JSON.stringify(response));

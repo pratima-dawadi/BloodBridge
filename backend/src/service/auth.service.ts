@@ -5,7 +5,7 @@ import { JwtPayload, sign, verify } from "jsonwebtoken";
 import config from "../config";
 
 /**
- * The function `login` hverify credentials and generate access and refresh tokens upon successful login.
+ * The function `login` verify credentials and generate access and refresh tokens upon successful login.
  * @param body - Users credentials
  * @returns Return an error message if the email or password is invalid. Otherwise, it will generate an access token and a refresh token.
  */

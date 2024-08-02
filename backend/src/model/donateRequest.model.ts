@@ -3,6 +3,8 @@ import { IDonate, IRequest } from "../interfaces/donateRequest.interfaces";
 import { BaseModel } from "./base.model";
 import { getUserQuery } from "../interfaces/user.interfaces";
 
+/* The `DonateRequestModel` class in TypeScript contains methods for donating and requesting blood,
+retrieving donation and request history, and getting donor emails based on a query. */
 export class DonateRequestModel extends BaseModel {
   static async donateBlood(
     recipientId: string,
@@ -82,7 +84,6 @@ export class DonateRequestModel extends BaseModel {
 
   static async getDonorEmail(query: getUserQuery) {
     try {
-      console.log(query);
       const data = await this.queryBuilder()
         .select("users.email")
         .from("users")

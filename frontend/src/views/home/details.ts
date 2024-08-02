@@ -5,6 +5,7 @@ import {
 import { getInventoryById } from "../../services/home.services";
 import { Chart, PieController, ArcElement, Tooltip, Legend } from "chart.js";
 import { baseUrl } from "../../utils/baseUrl";
+import { PIE_CHART_COLORS } from "../../utils/colors";
 Chart.register(PieController, ArcElement, Tooltip, Legend);
 
 export async function getDetails(id: string) {
@@ -83,7 +84,6 @@ export async function getDetails(id: string) {
 
     if (userType === "health_center") {
       const inventories = await getInventoryById(id);
-      console.log(`inventories: ${JSON.stringify(inventories)}`);
       const labels = inventories.map((inventory: any) => inventory.bloodType);
       const data = inventories.map((inventory: any) => inventory.totalQuantity);
 
@@ -98,22 +98,8 @@ export async function getDetails(id: string) {
             {
               label: "Inventory Quantity",
               data: data,
-              backgroundColor: [
-                "rgb(255, 99, 132)",
-                "rgb(54, 162, 235)",
-                "rgb(255, 206, 86)",
-                "rgb(75, 192, 192)",
-                "rgb(153, 102, 255)",
-                "rgb(255, 159, 64)",
-              ],
-              borderColor: [
-                "rgb(255, 99, 132)",
-                "rgb(54, 162, 235)",
-                "rgb(255, 206, 86)",
-                "rgb(75, 192, 192)",
-                "rgb(153, 102, 255)",
-                "rgb(255, 159, 64)",
-              ],
+              backgroundColor: PIE_CHART_COLORS,
+              borderColor: PIE_CHART_COLORS,
               borderWidth: 1,
             },
           ],

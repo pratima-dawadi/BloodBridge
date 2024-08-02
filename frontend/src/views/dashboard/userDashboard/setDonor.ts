@@ -103,8 +103,6 @@ export async function setDonor() {
       age: userAge.value,
     };
 
-    console.log(donorInformation);
-
     const response = await setDonorInformation(donorInformation);
 
     alert(response);

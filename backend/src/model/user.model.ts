@@ -3,6 +3,9 @@ import { BaseModel } from "./base.model";
 import db from "../utils/db";
 import { get } from "http";
 
+/**
+ * The `UserModel` class in TypeScript contains methods for creating, retrieving, updating, and deleting users and health centers.
+ */
 export class UserModel extends BaseModel {
   static async getUsers() {
     const query = this.queryBuilder()
