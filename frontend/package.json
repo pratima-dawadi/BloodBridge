@@ -15,6 +15,8 @@
     "@types/multer": "^1.4.11",
     "@types/node": "^22.0.0",
     "@types/nodemailer": "^6.4.15",
+    "@types/popper.js": "^1.11.0",
+    "@types/pusher-js": "^5.1.0",
     "@types/universal-router": "^8.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
@@ -23,13 +25,17 @@
     "@arction/lcjs": "^5.2.0",
     "@types/google.maps": "^3.55.12",
     "axios": "^1.7.2",
-    "bootstrap": "^3.4.1",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.3",
     "cors": "^2.8.5",
     "jquery": "^3.7.1",
     "jwt-decode": "^4.0.0",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.14",
+    "popper.js": "^1.16.1",
+    "pusher": "^5.2.0",
+    "pusher-js": "^8.4.0-rc2",
     "universal-router": "^9.2.0",
     "winston": "^3.13.1"
   }

@@ -28,7 +28,7 @@ export async function addDonationCamp() {
     </div>
     <div class="form-group">
       <label for="timeframe">Timeframe</label>
-      <input type="text" class="form-control" id="timeframe" placeholder="(e.g., 10:00 AM - 4:00 PM)" required>
+      <input type="text" class="form-control" id="timeframe" placeholder="(e.g. 10:00)" required>
     </div>
     <button type="submit" class="btn btn-primary">Add Donation Camp</button>
   </form>

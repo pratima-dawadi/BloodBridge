@@ -51,6 +51,7 @@ export async function donateBlood(
 
   if (donorDetails.userRole == "user") {
     bloodType.value = donorDetails.bloodGroup;
+    bloodType.disabled = true;
   }
 
   const getForm = document.getElementById("donate-form");

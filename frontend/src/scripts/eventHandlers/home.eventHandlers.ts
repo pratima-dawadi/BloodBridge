@@ -13,21 +13,21 @@ export const homeEventHandlers = () => {
   document
     .getElementById("get-health-center-list")
     ?.addEventListener("click", async () => {
-      await navigateTo("/getlist");
+      await navigateTo("/getlist-healthcenter");
       await handleHealthCenterList();
     });
 
   document
     .getElementById("get-donor-list")
     ?.addEventListener("click", async () => {
-      await navigateTo("/getlist");
+      await navigateTo("/getlist-donor");
       await handleDonorList();
     });
 
   document
     .getElementById("get-donation-camp-list")
     ?.addEventListener("click", async () => {
-      await navigateTo("/getlist");
+      await navigateTo("/getlist-donationcamp");
       await handleDonationCampList();
     });
 

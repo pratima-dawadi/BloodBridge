@@ -3,6 +3,6 @@
  * @param {string} token - The `token` parameter is a string that represents the authentication token
  * that needs to be saved in the browser's `localStorage`.
  */
-export function saveToken(token: string) {
+export async function saveToken(token: string) {
   localStorage.setItem("token", token);
 }

@@ -86,18 +86,15 @@ export async function handleHcCRUD() {
 
 export async function handleDonationCampCRUD() {
   const donationCamps = await getDonationCamps();
-  console.log(donationCamps);
   donationCampCRUD(donationCamps);
 }
 
 export async function handleDonationCRUD() {
   const donations = await getDonationHistoryAll();
-  console.log(donations);
   donationCRUD(donations);
 }
 
 export async function handleRequestCRUD() {
   const requests = await getRequestHistoryAll();
-  console.log(requests);
   requestCRUD(requests);
 }

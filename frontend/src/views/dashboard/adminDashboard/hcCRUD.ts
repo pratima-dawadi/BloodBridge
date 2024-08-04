@@ -8,7 +8,7 @@ export async function hcCRUD(healthCenters: any) {
   const adminDashboard = document.getElementById("admin-details");
   adminDashboard!.innerHTML = `
   <div class="container mt-5">
-  <button class="btn btn-success" id="add-health-center">Add User</button>
+  <button class="btn btn-success" id="add-health-center">Add Health Center</button>
   </div>
   <table class="table">
   <thead>

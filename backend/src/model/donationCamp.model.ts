@@ -38,7 +38,8 @@ export class DonationCampModel extends BaseModel {
         "donation_camp",
         "healthCenter.id",
         "donation_camp.healthCenterId"
-      );
+      )
+      .orderBy("donation_camp.date", "desc");
     const data = await query;
     return data;
   }

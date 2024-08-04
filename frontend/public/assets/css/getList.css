@@ -149,6 +149,7 @@
 
 .health-center-image-container {
   width: 50%;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-self: center;
@@ -157,8 +158,8 @@
 
 .health-center-image {
   max-width: 100%;
-  height: auto;
-  object-fit: cover;
+  max-height: 100%;
+  object-fit: contain;
   border-radius: 8px;
 }
 
@@ -170,6 +171,25 @@
 }
 .donate-blood {
   background-color: chocolate;
+}
+
+.main-details {
+  display: flex;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.info-details {
+  text-align: justify;
+  padding: 2%;
+  border: 1px solid;
+}
+
+.user-details {
+  margin: auto;
+  text-align: justify;
+  border: 1px solid;
+  padding: 2%;
 }
 
 @media (max-width: 1200px) {

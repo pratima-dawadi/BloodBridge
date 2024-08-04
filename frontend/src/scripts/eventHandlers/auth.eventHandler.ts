@@ -34,6 +34,9 @@ export const addEventListeners = async () => {
         navigateTo("/userdashboard");
       } else if (userRole === "health_center") {
         navigateTo("/healthcenterdashboard");
+      } else if (userRole === "admin") {
+        userRole === "admin";
+        navigateTo("/admindashboard");
       } else {
         navigateTo("/login");
       }
