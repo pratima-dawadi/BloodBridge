@@ -62,3 +62,11 @@
 #healthcenter-details {
   width: 40%;
 }
+
+.collection-date {
+  white-space: nowrap;
+}
+
+.inventory table {
+  overflow-y: scroll;
+}
