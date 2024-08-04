@@ -25,6 +25,8 @@ export async function getDetails(id: string) {
       item.image
     }" alt="Health Center Image" class="health-center-image">
           </div>
+          <div class="main-details">
+          <div class="info-details">
           <h5 class="card-title">ID: ${item.id}</h5>
           <p class="card-text"><strong>Name:</strong> ${item.name}</p>
           <p class="card-text"><strong>Email:</strong> ${item.email}</p>
@@ -40,8 +42,10 @@ export async function getDetails(id: string) {
             item.createdAt
           ).toLocaleString()}</p>
           <p class="card-text"><strong> Type: </strong>${item.type}</p>
+          </div>
           <div class="health-center-inventory">
                 <canvas id="health-center-inventory"></canvas>
+          </div>
           </div>
         </div>
       </div>
@@ -53,6 +57,7 @@ export async function getDetails(id: string) {
       <div class="card mb-3">
         <div class="card-body">
         <h2><strong>USER DETAILS</strong></h2>
+        <div class="user-details">
           <p class="card-text"><strong>Name:</strong> ${item.name}</p>
           <p class="card-text"><strong>Email:</strong> ${item.email}</p>
           <p class="card-text"><strong>Phone:</strong> ${item.phone}</p>
@@ -68,12 +73,13 @@ export async function getDetails(id: string) {
           <p class="card-text"><strong>Blood Group:</strong> ${
             item.bloodGroup
           }</p>
-          <p class="card-text"><strong>Last Donated Date:</strong> ${new Date(
+          <p class="card-text"><strong>Last Donated Date:</strong> ${
             item.lastDonated
-          ).toLocaleString()}</p>
+          }</p>
           <p class="card-text"><strong>Donation Count:</strong> ${
             item.donatedCount
           }</p>
+          </div>
           <div class="health-center-inventory">
                 <canvas id="health-center-inventory"></canvas>
           </div>

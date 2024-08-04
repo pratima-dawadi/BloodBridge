@@ -14,7 +14,7 @@ const handleLogin = async (event: Event) => {
     const response = await logIn(email, password);
     alert(JSON.stringify(response));
     if (response.accessToken) {
-      saveToken(response.accessToken);
+      await saveToken(response.accessToken);
       const getRole = await getDetails();
       localStorage.setItem("userRole", getRole.userRole);
       navigateTo("/");

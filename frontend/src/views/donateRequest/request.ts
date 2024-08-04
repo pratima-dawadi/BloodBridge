@@ -60,9 +60,11 @@ export async function requestBlood(
         supplierId,
         requestBlood
       );
+
       if (urgency) {
         handleUrgency(userPayload.id, bloodType.value, supplierData.email);
       }
+
       alert(JSON.stringify(response));
       navigateTo("/");
     } catch (error) {

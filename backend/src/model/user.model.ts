@@ -155,6 +155,21 @@ export class UserModel extends BaseModel {
         .first();
       const data = await query;
       return data;
+    } else if (getRole.userRole === "admin") {
+      const query = db("users")
+        .select(
+          "users.id as userId",
+          "users.name",
+          "users.email",
+          "users.phone",
+          "users.district",
+          "users.location",
+          "users.userRole"
+        )
+        .where("users.id", userId)
+        .first();
+      const data = await query;
+      return data;
     }
   }
 

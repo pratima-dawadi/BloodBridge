@@ -28,7 +28,21 @@ const routes = [
       ),
   },
   {
-    path: "/getlist",
+    path: "/getlist-healthcenter",
+    action: async () =>
+      fetch("./src/views/home/getList.html").then((response) =>
+        response.text()
+      ),
+  },
+  {
+    path: "/getlist-donor",
+    action: async () =>
+      fetch("./src/views/home/getList.html").then((response) =>
+        response.text()
+      ),
+  },
+  {
+    path: "/getlist-donationcamp",
     action: async () =>
       fetch("./src/views/home/getList.html").then((response) =>
         response.text()
