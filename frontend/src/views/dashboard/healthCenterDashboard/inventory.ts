@@ -1,25 +1,37 @@
-import { Chart, PieController, ArcElement, Tooltip, Legend } from "chart.js";
 import { IInventory } from "../../../interfaces/inventory.interfaces";
-import { PIE_CHART_COLORS } from "../../../utils/colors";
-Chart.register(PieController, ArcElement, Tooltip, Legend);
+import { inventoryChart } from "./inventoryChart";
 
 /**
  * The `inventory` function generates a dynamic inventory table and pie chart based on the provided
  * inventory data and displays it on the user dashboard element.
  */
-export function inventory(inventories: IInventory[]) {
+export async function inventory(inventories: IInventory[]) {
   const userDashboard = document.getElementById("healthcenter-details");
 
   if (userDashboard) {
+    const aggregatedData = inventories.reduce((acc, inventory) => {
+      const { bloodType, totalQuantity } = inventory;
+      const quantity = Number(totalQuantity);
+      if (!isNaN(quantity)) {
+        if (acc[bloodType]) {
+          acc[bloodType] += quantity;
+        } else {
+          acc[bloodType] = quantity;
+        }
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
     let tableContent = `
         <div class="container mt-5" id="user-dashboard" style="display: flex;">
           <div style="flex: 1; padding-right: 20px;">
             <h2>Inventory</h2>
-            <table class="table table-striped wide-table">
+            <table class="table table-striped wide-table inventory">
               <thead>
                 <tr>
                   <th scope="col">S.No</th>
                   <th scope="col">Blood Type</th>
+                  <th scope="col">Collection Date</th>
                   <th scope="col">Quantity</th>
                 </tr>
               </thead>
@@ -27,10 +39,14 @@ export function inventory(inventories: IInventory[]) {
       `;
 
     inventories.forEach((inventory, index) => {
+      const collectionDate = new Date(inventory.collectionDate);
       tableContent += `
           <tr>
             <th scope="row">${index + 1}</th>
             <td>${inventory.bloodType}</td>
+            <td class="collection-date">${
+              collectionDate.toISOString().split("T")[0]
+            }</td>
             <td>${inventory.totalQuantity}</td>
           </tr>
         `;
@@ -48,47 +64,7 @@ export function inventory(inventories: IInventory[]) {
 
     userDashboard.innerHTML = tableContent;
 
-    const labels = inventories.map((inventory) => inventory.bloodType);
-    const data = inventories.map((inventory) => inventory.totalQuantity);
-
-    const ctx = document.getElementById(
-      "inventoryPieChart"
-    ) as HTMLCanvasElement;
-    new Chart(ctx, {
-      type: "pie",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: "Inventory Quantity",
-            data: data,
-            backgroundColor: PIE_CHART_COLORS,
-            borderColor: PIE_CHART_COLORS,
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "top",
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                let label = context.label || "";
-                if (label) {
-                  label += ": ";
-                }
-                label += context.raw;
-                return label;
-              },
-            },
-          },
-        },
-      },
-    });
+    await inventoryChart(aggregatedData);
   } else {
     console.error("Element with id 'healthcenter-details' not found.");
   }

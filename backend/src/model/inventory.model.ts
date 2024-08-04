@@ -44,11 +44,15 @@ export class InventoryModel extends BaseModel {
         .where("userId", +userId)
         .first();
       const id = await healthCenterId;
+
+      const currentDate = new Date().toISOString().split("T")[0];
+
       const query = this.queryBuilder()
         .select("bloodType")
         .sum("quantity as totalQuantity")
         .from("inventory")
         .where("healthCenterId", id.id)
+        .andWhere("expirationDate", ">=", currentDate)
         .groupBy("bloodType");
       const data = await query;
       return data;
@@ -91,11 +95,11 @@ export class InventoryModel extends BaseModel {
     const dataHealthCenterId = await healthCenterId;
 
     const query = this.queryBuilder()
-      .select("bloodType")
+      .select("bloodType", "collectionDate")
       .sum("quantity as totalQuantity")
       .from("inventory")
       .where("healthCenterId", dataHealthCenterId.id)
-      .groupBy("bloodType");
+      .groupBy("bloodType", "collectionDate");
     const data = await query;
     return data;
   }
