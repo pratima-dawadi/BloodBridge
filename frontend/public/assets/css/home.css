@@ -41,6 +41,26 @@ body {
   top: 15rem;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-title h1 {
+  animation: fadeInUp 1s ease-out;
+}
+
+.home-title h4 {
+  animation: fadeInUp 1s ease-out 0.9s;
+  animation-fill-mode: both;
+}
+
 /* Header End */
 /***************************/
 

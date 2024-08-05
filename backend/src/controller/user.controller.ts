@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { FileRequest, Request } from "../interfaces/auth.interface";
 import * as UserService from "../service/user.service";
 
@@ -53,21 +53,37 @@ export async function updateUser(req: Request, res: Response) {
   res.json(`Updated User: ${JSON.stringify(data)}`);
 }
 
-export async function createUser(req: Request, res: Response) {
-  const { body } = req;
-  const data = await UserService.createUser(body);
-  res.json(data);
+export async function createUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { body } = req;
+    const data = await UserService.createUser(body);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
 }
 
-export async function createHealthCenter(req: Request, res: Response) {
+export async function createHealthCenter(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const { body } = req;
   if (!req.file) {
     return;
   }
-  const hcLogo = `uploads/${req.file.filename}`;
-  const hcInfo = { ...body, images: hcLogo };
-  const data = await UserService.createHealthCenter(hcInfo);
-  res.json(data);
+  try {
+    const hcLogo = `uploads/${req.file.filename}`;
+    const hcInfo = { ...body, images: hcLogo };
+    const data = await UserService.createHealthCenter(hcInfo);
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
 }
 
 export async function deleteUser(req: Request, res: Response) {

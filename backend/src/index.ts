@@ -4,6 +4,7 @@ import Router from "./routes/index.routes";
 import cors from "cors";
 import path from "path";
 import nodemailer from "nodemailer";
+import { genericErrorHandler, notFoundError } from "./middleware/errorHandler";
 
 const app = express();
 
@@ -47,6 +48,8 @@ app.get("/uploads/:imageName", (req, res) => {
 });
 
 app.use(Router);
+app.use(notFoundError);
+app.use(genericErrorHandler);
 
 app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}`);

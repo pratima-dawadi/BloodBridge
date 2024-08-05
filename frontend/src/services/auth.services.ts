@@ -31,8 +31,8 @@ export async function signUpUser(user: IUser) {
   try {
     const response = await axios.post(`${baseUrl}/users/signup`, user);
     return response.data;
-  } catch (error) {
-    return error;
+  } catch (error: any) {
+    return error.response.data;
   }
 }
 
@@ -48,8 +48,8 @@ export async function signUpHealthCenter(healthcenter: FormData) {
       healthcenter
     );
     return response.data;
-  } catch (error) {
-    return error;
+  } catch (error: any) {
+    return error.response.data;
   }
 }
 

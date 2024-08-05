@@ -7,6 +7,7 @@ import { UserModel } from "../model/user.model";
 import { stringify } from "querystring";
 import { DonorModel } from "../model/donor.model";
 import { InventoryModel } from "../model/inventory.model";
+import { UnauthenthicatedError } from "../error/UnauthenticatedError";
 
 /**
  * The function `auth` checks for a valid Bearer token in the request headers for authentication.
@@ -19,13 +20,14 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    res.json({ message: "Unauthorized" });
+    next(new UnauthenthicatedError("Unauthorized"));
+    return;
   }
 
   const token = authorization!.split(" ");
 
   if (token.length !== 2 || token[0] !== "Bearer") {
-    res.json({ message: "Token not found" });
+    next(new UnauthenthicatedError("Token not found"));
   }
 
   try {
@@ -33,7 +35,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
     req.user = user;
     next();
   } catch (error) {
-    res.json({ message: "Invalid token" });
+    next(new UnauthenthicatedError("Token not valid"));
   }
 }
 
@@ -54,11 +56,11 @@ export function authorize(permissions: string) {
       }
 
       if (userRole !== permissions) {
-        return res.json({ message: "Permission denied" });
+        return next(new UnauthenthicatedError("Permission denied"));
       }
       next();
     } catch (error) {
-      res.json({ message: "Failed to authorize user" });
+      return next(new UnauthenthicatedError("Failed to authorized user"));
     }
   };
 }
@@ -74,11 +76,11 @@ export function authorizeRole(permissions: string) {
     try {
       const userRole = await UserModel.getUserRole(user.id);
       if (userRole.userRole !== permissions) {
-        return res.json({ message: "Permission denied" });
+        return next(new UnauthenthicatedError("Permission denied"));
       }
       next();
     } catch (error) {
-      res.json({ message: "Failed to authorize user" });
+      return next(new UnauthenthicatedError("Failed to authorize user"));
     }
   };
 }
