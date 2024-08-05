@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { Schema } from "joi";
+import { BadRequestError } from "../error/BadRequestError";
 
 /**
  * function `validateReqBody` -validates the request body
@@ -9,13 +10,17 @@ import { Schema } from "joi";
  */
 export function validateReqBody(schema: Schema) {
   return (req: Request, res: Response, next: NextFunction) => {
-    const { error, value } = schema.validate(req.body);
+    try {
+      const { error, value } = schema.validate(req.body);
 
-    if (error) {
-      return res.status(400).json(error.message);
+      if (error) {
+        throw new BadRequestError(error.message);
+      }
+
+      req.body = value;
+      next();
+    } catch (error) {
+      next(error);
     }
-
-    req.body = value;
-    next();
   };
 }

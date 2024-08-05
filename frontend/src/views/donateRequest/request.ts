@@ -20,11 +20,13 @@ export async function requestBlood(
     "requesterName"
   ) as HTMLInputElement;
   requesterName.value = userPayload.name;
+  requesterName.disabled = true;
 
   const supplierName = document.getElementById(
     "supplierName"
   ) as HTMLInputElement;
   supplierName.value = supplierData.name;
+  supplierName.disabled = true;
 
   const bloodType = document.getElementById("bloodType") as HTMLInputElement;
 

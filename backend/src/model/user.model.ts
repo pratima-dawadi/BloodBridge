@@ -216,7 +216,7 @@ export class UserModel extends BaseModel {
       const query = this.queryBuilder().insert(userToCreate).into("users");
       const data = await query;
       if (data) {
-        return `User with email ${user.email} created`;
+        return `User created`;
       }
     } catch (err) {
       return err;
@@ -257,7 +257,7 @@ export class UserModel extends BaseModel {
 
         const data2 = await query2;
         if (data2) {
-          return `Health center with email ${user.email} created`;
+          return `Health center created`;
         }
       }
     } catch (err) {

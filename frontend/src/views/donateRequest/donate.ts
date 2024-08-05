@@ -16,6 +16,7 @@ export async function donateBlood(
 
   const donorName = document.getElementById("donorName") as HTMLInputElement;
   donorName.value = userPayload.name;
+  donorName.disabled = true;
 
   const donorDetails = await getDetails();
 
@@ -46,6 +47,7 @@ export async function donateBlood(
     "recipientName"
   ) as HTMLInputElement;
   recipientName.value = receiverInfo.name;
+  recipientName.disabled = true;
 
   const bloodType = document.getElementById("bloodType") as HTMLInputElement;
 
