@@ -20,6 +20,12 @@ export async function donateBlood(
 
   const donorDetails = await getDetails();
 
+  if (donorDetails.donorFlag == false) {
+    alert("You are not donor");
+    navigateTo("/");
+    return;
+  }
+
   // Check if the donor has donated blood in the last 90 days
   if (donorDetails.lastDonated) {
     const lastDonated = new Date(donorDetails.lastDonated);

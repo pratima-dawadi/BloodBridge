@@ -50,7 +50,7 @@ export class FilterModel extends BaseModel {
         "users.district",
         "users.location",
         "health_center.*",
-        "inventory.bloodType"
+        "inventory.healthCenterId"
       )
       .distinct()
       .from("users")
